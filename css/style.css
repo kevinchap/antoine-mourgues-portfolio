@@ -1,0 +1,318 @@
+html{
+	font-size: 62.5%;
+	-webkit-font-smoothing: antialiased;
+	height:100%;width:100%;
+}
+body{
+	position: relative;
+	height:100%;width:100%;
+	font-family: "SourceSansPro-Light";
+	color:white;
+}
+
+.displayNone{display:none;}
+
+/* loader site */
+.home-loader{
+	position: absolute;
+	top:0;left:0;
+	height:100%;width:100%;
+	z-index:100;
+}
+.home-loader .top, .home-loader .bottom{
+	position: absolute;
+	left:0;
+	height:50%;width:100%;
+	box-sizing:border-box;
+	background: #333333;
+}
+.home-loader .top{
+	top:0;
+	-webkit-transition: all 1s ease-out;
+  	transition: all 1s ease-in-out;
+}
+.home-loader .top.active{top:-50%;}
+.home-loader .bottom{
+	bottom:0;
+	-webkit-transition: all 1s ease-out;
+  	transition: all 1s ease-in-out;
+}
+.home-loader .bottom.active{bottom:-50%;}
+.home-loader .name{
+	position:absolute;
+	top:25%;margin-top:-22px;
+	width:100%;
+	display:block;
+	text-align:center;
+}
+.home-loader .name h2{
+	font-size:22px;font-size:2.2em;
+	font-family: "ProximaNova-Light";
+}
+.home-loader .name h2 strong{
+	font-family: "ProximaNova-Black";
+	text-transform: uppercase;
+}
+.home-loader .name h3{
+	margin-top:6px;
+	font-size:16px;font-size:1.6em;
+	color:#76ffd8;
+}
+.home-loader .load-bar{
+	position:relative;
+	display:block;
+	width:100%;height:1px;
+	top:50%;left:0;
+}
+.home-loader .load-bar p{
+	position:absolute;
+	display:block;
+	width:100%;
+	bottom:20px;
+	font-family: "SourceSansPro-Regular";
+	font-size:16px;font-size:1.6em;
+	text-align: center;
+}
+.home-loader .load-bar div{
+	position:absolute;
+	top:0;left:0;
+	height:1px;
+	background:white;
+	-webkit-transition: all 0 ease-in-out;
+  	transition: all 0 ease-in-out;
+}
+.home-loader .load-bar div::after{
+	content:"";
+	display:block;
+	position:absolute;
+	right:-4px;top:-1px;
+	width:4px;height:4px;
+	box-sizing:border-box;
+	border:1px solid white;
+	background: #333333;
+	-ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.home-loader .to-fade{
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: all .3s ease-in-out;
+  	transition: all .3s ease-in-out;
+}
+.home-loader .to-fade.fade{
+	opacity: 0;
+	visibility: hidden;
+}
+
+/* menu button */
+.menu-button{
+	position: absolute;
+	right: 50px;
+	top: 50px;
+	cursor: pointer;
+	z-index:200;
+
+	margin-right:-30px;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .8s 2.5s ease-in-out;
+  	transition: all .8s 2.5s ease-in-out;
+}
+.menu-button.show{
+	margin-right:0;
+	opacity: 1;
+	visibility: visible;
+}
+.menu-button span, .menu-button span:before, .menu-button span:after {
+	cursor: pointer;
+	height: 3px;
+	width: 20px;
+	background: #FFF;
+	position: absolute;
+	display: block;
+	content: '';
+
+	transition: all 500ms ease-in-out;
+	-webkit-transition: all 500ms ease-in-out;
+	-moz-transition: all 500ms ease-in-out;
+	-o-transition: all 500ms ease-in-out;
+}
+.menu-button span:before {
+	top: -6px;
+}
+.menu-button span:after {
+	bottom: -6px;
+}
+.menu-button.active span {
+	background-color: transparent;
+}
+.menu-button.active span:before {
+	top:0;
+}
+.menu-button.active span:after{
+	bottom:0;
+}
+.menu-button.active span:before {
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+}
+.menu-button.active span:after {
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+}
+
+/* home */
+.home{
+	display:block;
+	position:relative;
+	height:100%;width:100%;
+	background:url("../img/back-home.jpg") no-repeat center center;
+	-webkit-background-size: cover;
+  	background-size: cover; 
+}
+.home .title{
+	display:block;
+	position:absolute;
+	top:50%;
+	margin-top: -55px;
+	width:100%;
+	text-align: center;
+}
+.home h1{
+	font-family: "ProximaNova-Black";
+	text-transform: uppercase;
+	font-size:48px;font-size:4.8em;
+	text-shadow: 0px 1px 5px rgba(150, 150, 150, 0.5);
+
+	margin-top:-30px;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .8s ease-in-out;
+  	transition: all .8s ease-in-out;
+}
+.home h1.show{
+	margin-top: 0;
+	opacity: 1;
+	visibility: visible;
+}
+.home .seperate{
+	display:block;
+	position: relative;
+	margin:20px auto;
+	width:5px;height:5px;
+
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .2s .8s ease-in-out;
+  	transition: all .2s .8s ease-in-out;
+}
+.home .seperate.show{
+	opacity: 1;
+	visibility: visible;
+}
+.home .seperate div{
+	display:block;
+	width:5px;height:5px;
+	box-sizing:border-box;
+	border:1px solid #76ffd8;
+	-ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.home .seperate::before, .home .seperate::after{
+	content:"";
+	display:block;
+	position:absolute;
+	height:1px;
+	background:#76ffd8;
+	top:2px;
+
+	width:0px;
+	-webkit-transition: width 1s 1s ease;
+  	transition: width 1s 1s ease;
+}
+.home .seperate.show::before, .home .seperate.show::after{
+	width:100px;
+}
+.home .seperate::before{
+	right:15px;
+}
+.home .seperate::after{
+	left:15px;
+}
+.home .title p{
+	font-size:18px;font-size:1.8em;
+	text-shadow: 0px 1px 2px rgba(150, 150, 150, 0.5);
+
+	margin-top:-10px;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .5s 2s ease-in-out;
+  	transition: all .5s 2s ease-in-out;
+}
+.home p.show{
+	margin-top:0;
+	opacity: 1;
+	visibility: visible;
+}
+.home p strong{
+	font-family: "SourceSansPro-Bold";
+}
+
+.home .scrolldown, .home .made-by{
+	position:absolute;
+	bottom:40px;
+	font-size:11px;font-size:1.1em;
+
+	margin-bottom:-30px;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .8s 2.5s ease-in-out;
+  	transition: all .8s 2.5s ease-in-out;
+}
+.home .scrolldown.show, .home .made-by.show{
+	margin-bottom:0;
+	opacity: 1;
+	visibility: visible;
+}
+.home .scrolldown{
+	display:block;
+	width:100%;
+	text-align:center;
+	cursor:pointer;
+}
+.home .scrolldown .arrow{
+	display:block;
+	width:6px;height:43px;
+	margin:0 auto 20px auto;
+	background:url("../img/arrow.png") no-repeat center;
+
+	-webkit-animation: movingarrow 1s infinite;
+	-moz-animation: movingarrow .8s infinite; 
+	-o-animation: movingarrow .8s infinite; 
+	animation: movingarrow .8s infinite;
+}
+@-webkit-keyframes movingarrow {
+	0%{margin-bottom:20px;}
+	50%{margin-bottom: 10px;}
+	100%{margin-bottom:20px;}
+} 
+@keyframes movingarrow {
+	0%{margin-bottom:20px;}
+	50%{margin-bottom: 10px;}
+	100%{margin-bottom:20px;}
+}
+.home .scrolldown p{
+	font-family: "ProximaNova-Regular";
+	text-transform: uppercase;
+}
+.home .made-by{
+	right:50px;
+	font-family: "ProximaNova-Light";
+}
+.home .made-by strong{
+	font-family: "ProximaNova-Semibold";
+}
