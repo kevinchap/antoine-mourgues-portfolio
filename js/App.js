@@ -50,7 +50,7 @@ function loadingSite(){
     $(".home-loader .load-bar div").css("width", loaderTime+"%");
     var timer = setTimeout(function() {
         loadingSite();
-    }, 10);
+    }, 30);
     if(loaderTime == 100){
         clearTimeout(timer);
         $(".home-loader .to-fade").addClass('fade');
@@ -58,7 +58,7 @@ function loadingSite(){
         setTimeout(function(){
             $(".home-loader").addClass('displayNone');
             animHome();
-        }, 1000);
+        }, 2000);
     }
 }
 
