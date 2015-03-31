@@ -82,7 +82,7 @@ body.noscroll{overflow: hidden;}
 	-webkit-transition: all 0 ease-in-out;
   	transition: all 0 ease-in-out;
 }
-.home-loader .load-bar div::after{
+/*.home-loader .load-bar div::after{
 	content:"";
 	display:block;
 	position:absolute;
@@ -94,7 +94,7 @@ body.noscroll{overflow: hidden;}
 	-ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
-}
+}*/
 .home-loader .to-fade{
 	opacity: 1;
 	visibility: visible;
@@ -109,7 +109,7 @@ body.noscroll{overflow: hidden;}
 /* menu button */
 .menu-button{
 	position: absolute;
-	right: 50px;
+	right: 70px;
 	top: 50px;
 	cursor: pointer;
 	z-index:200;
