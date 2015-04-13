@@ -1,0 +1,31 @@
+[  
+   {  
+      "id":1,
+      "name":"Mundial Memories",
+      "job":"UI/UX Designer",
+      "app":false,
+      "wins":["fwa","awwwards"],
+      "background_item":"mundialmemories"
+   },
+   {  
+      "id":2,
+      "name":"Panam All Starz",
+      "job":"Project manager - Art director",
+      "app":false,
+      "background_item":"panamallstarz"
+   },
+   {  
+      "id":3,
+      "name":"Formeetable",
+      "job":"Art director",
+      "app":false,
+      "background_item":"formeetable"
+   },
+   {  
+      "id":4,
+      "name":"Luboo Studio",
+      "job":"Art director",
+      "app":false,
+      "background_item":"luboostudio"
+   }
+]

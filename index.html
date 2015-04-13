@@ -8,36 +8,57 @@
     </head>
     <body class="noscroll">
         <section class="home-loader">
-            <section class="panel top"></section>
-            <section class="panel bottom"></section>
-            <section class="name to-fade">
+            <div class="panel top"></div>
+            <div class="panel bottom"></div>
+            <div class="name to-fade">
                 <h2>Antoine <strong>Mourgues</strong></h2>
                 <h3>Interactive designer</h3>
-            </section>
-            <section class="load-bar to-fade">
+            </div>
+            <div class="load-bar to-fade">
                 <p>0 %</p>
                 <div></div>
-            </section>
+            </div>
         </section>
-        <a href="#" class="menu-button to-show">
+        <a href="#" class="menu-button">
             <span></span>
         </a>
         <section class="home">
-            <section class="title">
-                <h1 class="to-show">Pixel Perfect Design</h1>
-                <div class="seperate to-show"><div></div></div>
-                <p class="to-show">Hello I'm <strong>Antoine MOURGUES</strong>, a 23 years old designer from Paris</p>
-            </section>
-            <div class="scrolldown to-show">
-                <div class="arrow"></div>
-                <p>Scroll down</p>
+            <div class="content">
+                <div class="title">
+                    <h1>Pixel Perfect Design</h1>
+                    <div class="seperate"><div></div></div>
+                    <p>Hello I'm <strong>Antoine MOURGUES</strong>, a 23 years old designer from Paris</p>
+                </div>
+                <div class="scrolldown">
+                    <div class="arrow"></div>
+                    <p>Scroll down</p>
+                </div>
+                <p class="made-by">Made with <strong>K&eacute;vin Chapron</strong></p>
             </div>
-            <p class="made-by to-show">Made with <strong>K&eacute;vin Chapron</strong></p>
+        </section>
+        <section class="portfolio">
+            <div class="content">
+                <div id="list-projects">
+                    
+                </div>
+                <div class="presentation">
+                    <h2><span>My</span><br/>portfolio</h2>
+                    <p>I am an interactive designer. I was born and raised in France, and I live in Paris where I am completing a master’s degree at HETIC.</p>
+                    <p>I work on freelance since 2012. My clients include TEDx, L’équipe and myG.</p>
+                    <div class="mourgues"></div>
+                    <div class="name">
+                        <h3>Antoine <strong>Mourgues</strong></h3>
+                        <hr>
+                        <p>Interactive designer</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <script src="js/vendor/jquery-1.11.2.min.js"></script>
         <script src="js/vendor/underscore.js"></script>
         <script src="js/vendor/backbone.js"></script>
+        <script src="js/utils.js"></script>
         <script src="js/App.js"></script>
         <script src="js/models/Project.js"></script>
         <script src="js/collections/Projects.js"></script>

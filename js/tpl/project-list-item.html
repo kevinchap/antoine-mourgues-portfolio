@@ -1,0 +1,16 @@
+<a href='#projects/<%= id %>' style="background:url('./img/<%= background_item %>.jpg') no-repeat center center;-webkit-background-size: cover;background-size: cover;">
+	<div class="content-item">
+		<div>
+			<h3><%= name %></h3>
+			<hr>
+			<p><%= job %></p>
+		</div>
+		<% if(typeof wins !== "undefined"){ %>
+			<ul>
+				<% for(var win in wins) { %>
+		           <li><img src="./img/<%= wins[win] %>.png" alt="R&eacute;compense <%= wins[win] %> pour <%= name %>."/></li>
+		       <% } %>
+			</ul>
+		<% } %>
+	</div>
+</a>
