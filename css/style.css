@@ -409,13 +409,35 @@ body.noscroll{overflow: hidden;}
 .portfolio #list-projects > ul > li a{
 	display:block;
 	height:100%;width:100%;
+	position:relative;
+}
+.portfolio #list-projects > ul > li a:hover{
+	z-index: 2;
+}
+.portfolio #list-projects > ul > li a::after{
+	content: '';
+	width:250px;height:1px;
+	background-color: #76ffd8;
+	position:absolute;
+	bottom:-1px;
+	left:50%;margin-left:-175px;
+	z-index: 1;
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: all .7s ease;
+  	transition: all .7s ease;
+}
+.portfolio #list-projects > ul > li a:hover::after{
+	background-color: transparent;
+	opacity: 0;
+	visibility: hidden;
 }
 .portfolio #list-projects .content-item{
 	position: relative;
 	height: 100%;width:100%;
 	background:white;
-	-webkit-transition: all .5s ease;
-  	transition: all .5s ease;
+	-webkit-transition: all .7s ease;
+  	transition: all .7s ease;
 }
 .portfolio #list-projects .content-item:hover{
 	background: transparent;
@@ -425,19 +447,6 @@ body.noscroll{overflow: hidden;}
 	content: '';
 	display: inline-block;
 	vertical-align: middle;
-}
-.portfolio #list-projects .content-item::after{
-	content: '';
-	width:250px;height:1px;
-	background-color: #76ffd8;
-	position:absolute;
-	bottom:0;
-	left:50%;margin-left:-175px;
-	-webkit-transition: all .5s ease;
-  	transition: all .5s ease;
-}
-.portfolio #list-projects .content-item:hover::after{
-	background-color: transparent;
 }
 .portfolio #list-projects .content-item div{
 	display: inline-block;
@@ -450,6 +459,7 @@ body.noscroll{overflow: hidden;}
 .portfolio #list-projects .content-item ul{
 	position: absolute;
 	bottom:50px;left:50px;
+	overflow: visible;
 }
 .portfolio #list-projects .content-item ul li{
 	display: inline-block;
@@ -463,27 +473,29 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio #list-projects .content-item h3{
 	color:#333333;
-	-webkit-transition: all .5s ease;
-  	transition: all .5s ease;
+	-webkit-transition: all .7s ease;
+  	transition: all .7s ease;
 }
 .portfolio #list-projects .content-item:hover h3{
 	color:#ffffff;
+	text-shadow: 0 1px 2px rgba(0,0,0,.35);
 }
 .portfolio .content-item p{
 	font-family: "SourceSansPro-Light";
 	font-size:16px;font-size:1.6rem;
 	color:#333333;
-	-webkit-transition: all .5s ease;
-  	transition: all .5s ease;
+	-webkit-transition: all .7s ease;
+  	transition: all .7s ease;
 }
 .portfolio .content-item:hover p{
 	color:#ffffff;
+	text-shadow: 0 1px 2px rgba(0,0,0,.35);
 }
 .portfolio hr{
 	border:none;
 	width:35px;height:1px;
 	background-color:#76ffd8;
-	margin:16px auto 10px auto;
+	margin:14px auto 8px auto;
 }
 .portfolio .content-item hr{
 	width:135px;
@@ -493,11 +505,11 @@ body.noscroll{overflow: hidden;}
 .portfolio .presentation{
 	width:24%;
 	float:right;
-	padding:116px 50px;
+	padding:90px 50px;
 	background: #333333;
 }
 .portfolio .presentation h2{
-	
+	font-size:23px;font-size:2.3rem;
 }
 .portfolio .presentation h2 span{
 	font-family: "ProximaNova-Light";
@@ -515,7 +527,7 @@ body.noscroll{overflow: hidden;}
 	display:block;
 	width:72px;height:72px;
 	margin:60px auto 0 auto;
-	border:3px solid #76ffd8;
+	border:2px solid #76ffd8;
 	background:url("../img/antoinemourgues.png") no-repeat center center;
 	transform-origin: 50% 50%;
 	-ms-transform: rotate(45deg);
@@ -531,6 +543,7 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio .presentation .name h3 strong{
 	font-family: "ProximaNova-Black";
+	text-transform: uppercase;
 }
 .portfolio .presentation .name p{margin:0;line-height:normal;}
 
