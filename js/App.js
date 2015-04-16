@@ -31,7 +31,7 @@ var AppRouter = Backbone.Router.extend({
         home = true;
 
         setTimeout(function(){
-            $('.menu-button, .home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+            $('.home .menu-button, .home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
         }, 4500);
 
         setTimeout(function(){
@@ -45,13 +45,33 @@ var AppRouter = Backbone.Router.extend({
                 }
             });
         }, 4500);
+
+        $('.scrolldown').click(function(){
+            slide(true);
+        });
     },
 
     projects:function () {
         if(home!=true){
-            $('.menu-button, .home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+            $('.home .menu-button, .home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
             $('.home, .portfolio, .home .content, .portfolio .content').addClass('slidedown');
+            setTimeout(function(){
+                $('.presentation, .portfolio .menu-button, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                var i=0;
+                $('.portfolio #list-projects > ul > li').bind('inview',function(event, isInView, visiblePartX, visiblePartY){
+                    if(isInView){
+                        console.log(i);
+                        i++;
+                        $(this).unbind("inview")
+                    }
+                });
+            }, 5500);
+        }else{
+            setTimeout(function(){
+                $('.presentation, .portfolio .menu-button, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+            },2000);
         }
+
         var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
         $('.portfolio .content .presentation').bind(mousewheelevt, function(e){
             var evt = window.event || e //equalize event object     

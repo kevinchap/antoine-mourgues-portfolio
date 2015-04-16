@@ -108,7 +108,7 @@ body.noscroll{overflow: hidden;}
 }
 
 /* menu button */
-.menu-button{
+ .menu-button{
 	position: absolute;
 	height: 15px;width: 20px;
 	right: 50px;
@@ -119,16 +119,22 @@ body.noscroll{overflow: hidden;}
 	margin-top:-30px;
 	opacity: 0;
 	visibility: hidden;
+	
+}
+.home .menu-button{
 	-webkit-transition: all .8s 2.5s ease-in-out;
   	transition: all .8s 2.5s ease-in-out;
+}
+.portfolio .menu-button{
+	-webkit-transition: all .8s .5s ease-in-out;
+  	transition: all .8s .5s ease-in-out;
 }
 .menu-button.show{
 	margin-top:0;
 	opacity: 1;
 	visibility: visible;
-
 }
-.menu-button span, .menu-button span:before, .menu-button span:after {
+ .menu-button span, .menu-button span:before, .menu-button span:after {
 	cursor: pointer;
 	height: 3px;
 	width: 20px;
@@ -142,27 +148,27 @@ body.noscroll{overflow: hidden;}
 	-moz-transition: all 500ms ease-in-out;
 	-o-transition: all 500ms ease-in-out;
 }
-.menu-button span:before {
+ .menu-button span:before {
 	top: -6px;
 }
-.menu-button span:after {
+ .menu-button span:after {
 	bottom: -6px;
 }
-.menu-button.active span {
+ .menu-button.active span {
 	background-color: transparent;
 }
 .menu-button.active span:before {
 	top:0;
 }
-.menu-button.active span:after{
+ .menu-button.active span:after{
 	bottom:0;
 }
-.menu-button.active span:before {
+ .menu-button.active span:before {
 	transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 }
-.menu-button.active span:after {
+ .menu-button.active span:after {
 	transform: rotate(-45deg);
 	-webkit-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
@@ -318,6 +324,7 @@ body.noscroll{overflow: hidden;}
 	display:block;
 	width:100%;
 	text-align:center;
+	cursor:pointer;
 }
 .home .scrolldown .arrow{
 	display:block;
@@ -348,8 +355,9 @@ body.noscroll{overflow: hidden;}
 	right:50px;
 	font-family: "ProximaNova-Light";
 }
-.home .made-by strong{
+.home .made-by a{
 	font-family: "ProximaNova-Semibold";
+	color:white;
 }
 
 /* portfolio */
@@ -371,6 +379,7 @@ body.noscroll{overflow: hidden;}
 	position:relative;
 	height:100%;width:100%;
 	clear:both;
+	background:#fff;
 	-moz-transform: scale(.8);
 	-webkit-transform: scale(.8);
 	-o-transform: scale(.8);
@@ -394,7 +403,6 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio #list-projects{
 	width:76%;
-	background:#333333;
 	float:left;
 }
 .portfolio #list-projects > ul{
@@ -410,6 +418,12 @@ body.noscroll{overflow: hidden;}
 	display:block;
 	height:100%;width:100%;
 	position:relative;
+}
+.portfolio #list-projects > ul > li a.non-retina{
+	display: block;
+}
+.portfolio #list-projects > ul > li a.retina{
+	display: none;
 }
 .portfolio #list-projects > ul > li a:hover{
 	z-index: 2;
@@ -505,11 +519,41 @@ body.noscroll{overflow: hidden;}
 .portfolio .presentation{
 	width:24%;
 	float:right;
+	/*position:fixed;
+	top:0;right:-100%;*/
 	padding:90px 50px;
 	background: #333333;
+	-ms-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+	-webkit-transition: all .5s ease;
+  	transition: all .5s ease;
+}
+.portfolio .presentation.show{
+	-ms-transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    opacity: 1;
+    visibility: visible;
 }
 .portfolio .presentation h2{
 	font-size:23px;font-size:2.3rem;
+	-ms-transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .8s 1.3s ease;
+  	transition: all .8s 1.3s ease;
+}
+.portfolio .presentation h2.show{
+	-ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
 }
 .portfolio .presentation h2 span{
 	font-family: "ProximaNova-Light";
@@ -517,24 +561,64 @@ body.noscroll{overflow: hidden;}
 	color:#76ffd8;
 	text-transform: uppercase;
 }
-.portfolio .presentation p{
+.portfolio .presentation > p{
 	font-family: "SourceSansPro-Light";
 	font-size:14px;font-size:1.4rem;
 	line-height: 24px;
-	margin-top:30px;
+	margin-top: 30px;
+	-ms-transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .8s 1.3s ease;
+  	transition: all .8s 1.3s ease;
+}
+.portfolio .presentation > p.show{
+	-ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
 }
 .portfolio .presentation .mourgues{
 	display:block;
 	width:72px;height:72px;
-	margin:60px auto 0 auto;
+	margin: 0 auto;
 	border:2px solid #76ffd8;
 	background:url("../img/antoinemourgues.png") no-repeat center center;
 	transform-origin: 50% 50%;
 	-ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
+    margin-top: 50px;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .8s 2.1s ease;
+  	transition: all .8s 2.1s ease;
 }
-.portfolio .presentation .name{text-align: center;}
+.portfolio .presentation .mourgues.show{
+	margin-top: 60px;
+	opacity: 1;
+	visibility: visible;
+}
+.portfolio .presentation .name{
+	text-align: center;
+	-ms-transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .8s 2.1s ease;
+  	transition: all .8s 2.1s ease;
+}
+.portfolio .presentation .name.show{
+	-ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+}
 .portfolio .presentation .name h3{
 	font-family: "ProximaNova-Light";
 	font-size:14px;font-size:1.4rem;
@@ -545,7 +629,33 @@ body.noscroll{overflow: hidden;}
 	font-family: "ProximaNova-Black";
 	text-transform: uppercase;
 }
-.portfolio .presentation .name p{margin:0;line-height:normal;}
+.portfolio .presentation .name p{
+	font-family: "SourceSansPro-Light";
+	font-size:14px;font-size:1.4rem;
+	margin:0;
+	line-height:normal;
+}
+
+/** RETINA **/
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and ( -moz-min-device-pixel-ratio: 2),
+only screen and ( -o-min-device-pixel-ratio: 2/1),
+only screen and ( min-device-pixel-ratio: 2),
+only screen and ( min-resolution: 192dpi),
+only screen and ( min-resolution: 2dppx)
+{
+	.portfolio .presentation .mourgues{
+		background: url("../img/antoinemourgues@x2.png") no-repeat center center;
+		-webkit-background-size: 225%;
+		background-size: 225%;
+	}
+	.portfolio #list-projects > ul > li a.non-retina{
+		display: none;
+	}
+	.portfolio #list-projects > ul > li a.retina{
+		display: block;
+	}
+}
 
 
 
