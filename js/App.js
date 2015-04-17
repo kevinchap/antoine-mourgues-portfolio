@@ -1,5 +1,5 @@
 // Router
-var home = false;
+var home, projects = false;
 var AppRouter = Backbone.Router.extend({
  
     // routes:{
@@ -52,23 +52,21 @@ var AppRouter = Backbone.Router.extend({
     },
 
     projects:function () {
-        if(home!=true){
+        if(home!==true){
             $('.home .menu-button, .home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
             $('.home, .portfolio, .home .content, .portfolio .content').addClass('slidedown');
             setTimeout(function(){
                 $('.presentation, .portfolio .menu-button, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
-                var i=0;
-                $('.portfolio #list-projects > ul > li').bind('inview',function(event, isInView, visiblePartX, visiblePartY){
-                    if(isInView){
-                        console.log(i);
-                        i++;
-                        $(this).unbind("inview")
-                    }
-                });
+                setTimeout(function(){
+                    showItemsProjects();
+                },2500);
             }, 5500);
         }else{
             setTimeout(function(){
                 $('.presentation, .portfolio .menu-button, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                setTimeout(function(){
+                    showItemsProjects();
+                },2500);
             },2000);
         }
 
@@ -82,10 +80,14 @@ var AppRouter = Backbone.Router.extend({
             }
         });
 
-        this.projectList = new ProjectList();
-        this.projectList.fetch({success: function() {
-            $('#list-projects').html(new ProjectListView({model: app.projectList}).render().el);
-        }});
+        if(projects !== true){
+            this.projectList = new ProjectList();
+            this.projectList.fetch({success: function() {
+                $('#list-projects').html(new ProjectListView({model: app.projectList}).render().el);
+            }});
+        }
+
+        projects = true;
     },
  
     projectDetails:function (id) {
@@ -114,7 +116,7 @@ function loadingSite(){
         var timer = setTimeout(function() {
             loadingSite();
         }, 30);
-        if(loaderTime == 100){
+        if(loaderTime === 100){
             clearTimeout(timer);
             $(".home-loader .to-fade").addClass('fade');
             $(".home-loader .panel").addClass('active');
@@ -127,7 +129,7 @@ function loadingSite(){
 }
 
 function slide(down){
-    if(down == true){
+    if(down === true){
         location.replace("#projects");
         $('.home .content').addClass('slidedown');
         setTimeout(function(){
@@ -145,6 +147,25 @@ function slide(down){
         setTimeout(function(){
             $('.home .content').removeClass('slidedown');
         },1300);
+    }
+}
+
+function showItemsProjects(){
+    var lis = $('.portfolio #list-projects > ul > li');
+    var nbAlreadyInView = parseInt($(window).height()/300);
+    var i;
+    for(i=0;i<nbAlreadyInView;i++){
+        setTimeout(function(lis,i){
+            $(lis[i]).addClass('show');
+        },i*1800,lis,i);
+    }
+    for(i=nbAlreadyInView; i<lis.length; i++){
+        $(lis[i]).bind('inview',function(event, isInView, visiblePartX, visiblePartY){
+            if(isInView && visiblePartY === "both"){
+                $(this).addClass('show');
+                $(this).unbind("inview")
+            }
+        });
     }
 }
 

@@ -395,6 +395,7 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio #list-projects, .portfolio .presentation{
 	display: inline-block;
+	vertical-align: top;
 	height: 100%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -403,7 +404,7 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio #list-projects{
 	width:76%;
-	float:left;
+	/*float:left;*/
 }
 .portfolio #list-projects > ul{
 	display: block;
@@ -430,16 +431,18 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio #list-projects > ul > li a::after{
 	content: '';
-	width:250px;height:1px;
+	height:1px;
 	background-color: #76ffd8;
 	position:absolute;
 	bottom:-1px;
-	left:50%;margin-left:-175px;
+	left:50%;
 	z-index: 1;
-	opacity: 1;
-	visibility: visible;
-	-webkit-transition: all .7s ease;
-  	transition: all .7s ease;
+	width:0;margin-left:0;
+	-webkit-transition: all 1s .8s ease;
+  	transition: all 1s .8s ease;
+}
+.portfolio #list-projects > ul > li.show a::after{
+	width:250px;margin-left:-175px;
 }
 .portfolio #list-projects > ul > li a:hover::after{
 	background-color: transparent;
@@ -475,6 +478,24 @@ body.noscroll{overflow: hidden;}
 	bottom:50px;left:50px;
 	overflow: visible;
 }
+.portfolio #list-projects .content-item div, .portfolio #list-projects .content-item ul{
+	opacity: 0;
+	visibility: hidden;
+	-moz-transform: translateX(-50px);
+	-webkit-transform: translateX(-50px);
+	-o-transform: translateX(-50px);
+	transform: translateX(-50px);
+	-webkit-transition: all .8s ease;
+  	transition: all .8s ease;
+}
+.portfolio #list-projects > ul > li.show .content-item div, .portfolio #list-projects > ul > li.show .content-item ul{
+	opacity: 1;
+	visibility: visible;
+	-moz-transform: translateX(0);
+	-webkit-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
+}
 .portfolio #list-projects .content-item ul li{
 	display: inline-block;
 	vertical-align: middle;
@@ -483,7 +504,6 @@ body.noscroll{overflow: hidden;}
 .portfolio #list-projects .content-item h3, .portfolio .presentation h2{
 	font-family: "ProximaNova-Black";
 	font-size:26px;font-size:2.6rem;
-	text-transform: uppercase;
 }
 .portfolio #list-projects .content-item h3{
 	color:#333333;
@@ -518,7 +538,7 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio .presentation{
 	width:24%;
-	float:right;
+	/*float:right;*/
 	/*position:fixed;
 	top:0;right:-100%;*/
 	padding:90px 50px;
@@ -539,6 +559,7 @@ body.noscroll{overflow: hidden;}
     visibility: visible;
 }
 .portfolio .presentation h2{
+	text-transform: uppercase;
 	font-size:23px;font-size:2.3rem;
 	-ms-transform: translateY(-10px);
     -webkit-transform: translateY(-10px);
