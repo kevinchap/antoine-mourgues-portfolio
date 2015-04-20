@@ -96,7 +96,7 @@ function loadingSite(){
         $(".home-loader .load-bar div").css("width", loaderTime+"%");
         var timer = setTimeout(function() {
             loadingSite();
-        }, 30);
+        }, 20);
         if(loaderTime === 100){
             clearTimeout(timer);
             $(".home-loader .to-fade").addClass('fade');
@@ -158,6 +158,9 @@ function slide(down){
 function showItemsProjects(){
     var lis = $('.portfolio #list-projects > ul > li');
     var nbAlreadyInView = parseInt($(window).height()/300);
+    if(($(window).height()/300 - Math.floor($(window).height()/300)) > 0.5){
+        nbAlreadyInView++;
+    }
     var i;
     for(i=0;i<nbAlreadyInView;i++){
         setTimeout(function(lis,i){
