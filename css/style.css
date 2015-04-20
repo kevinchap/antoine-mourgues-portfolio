@@ -107,6 +107,62 @@ body.noscroll{overflow: hidden;}
 	visibility: hidden;
 }
 
+/* menu */
+.menu{
+	display: none;
+	position:relative;
+	width:100%;height:100%;
+	z-index:10;
+	background:#333;
+	background:rgba(51,51,51,.95);
+}
+.menu::before{
+	height: 100%;
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+}
+.menu .menuUl{
+	display:inline-block;
+	vertical-align: middle;
+	width:100%;
+}
+.menu .menuUl li a{
+	display:block;
+	width:100%;
+	height:60px;line-height:60px;
+	text-align: center;
+	font-family: "ProximaNova-Regular";
+	font-size:20px;font-size:2rem;
+	text-transform: uppercase;
+	color:white;
+	-/*webkit-transition: all .5s ease;
+  	transition: all .5s ease;*/
+}
+.menu .menuUl li a:hover{
+	background:#76ffd8;
+	color:#333;
+}
+.menu .name{
+	position:absolute;
+	top:25%;margin-top:-22px;
+	width:100%;
+	display:block;
+	text-align:center;
+}
+.menu .name h2{
+	font-size:22px;font-size:2.2rem;
+	font-family: "ProximaNova-Light";
+}
+.menu .name h2 strong{
+	font-family: "ProximaNova-Black";
+	text-transform: uppercase;
+}
+.menu .name h3{
+	margin-top:6px;
+	font-size:16px;font-size:1.6rem;
+	color:#76ffd8;
+}
 /* menu button */
  .menu-button{
 	position: absolute;
@@ -403,8 +459,9 @@ body.noscroll{overflow: hidden;}
 	border:none;
 }
 .portfolio #list-projects{
-	width:76%;
+	width:77%;
 	/*float:left;*/
+	position:relative;z-index:1;
 }
 .portfolio #list-projects > ul{
 	display: block;
@@ -438,8 +495,8 @@ body.noscroll{overflow: hidden;}
 	left:50%;
 	z-index: 1;
 	width:0;margin-left:0;
-	-webkit-transition: all 1s .8s ease;
-  	transition: all 1s .8s ease;
+	-webkit-transition: all .4s .4s ease;
+  	transition: all .4s .4s ease;
 }
 .portfolio #list-projects > ul > li.show a::after{
 	width:250px;margin-left:-175px;
@@ -485,8 +542,8 @@ body.noscroll{overflow: hidden;}
 	-webkit-transform: translateX(-50px);
 	-o-transform: translateX(-50px);
 	transform: translateX(-50px);
-	-webkit-transition: all .8s ease;
-  	transition: all .8s ease;
+	-webkit-transition: all .4s ease;
+  	transition: all .4s ease;
 }
 .portfolio #list-projects > ul > li.show .content-item div, .portfolio #list-projects > ul > li.show .content-item ul{
 	opacity: 1;
@@ -536,11 +593,16 @@ body.noscroll{overflow: hidden;}
 	margin-left:0;
 	margin-right:0;
 }
+.portfolio .white{
+	position:fixed;z-index:2;
+	top:0;right:0;
+	height:100%;width:24%;
+	background:white;
+}
 .portfolio .presentation{
-	width:24%;
+	width:100%;height:100%;
 	/*float:right;*/
-	/*position:fixed;
-	top:0;right:-100%;*/
+	
 	padding:90px 50px;
 	background: #333333;
 	-ms-transform: translateX(100%);
