@@ -459,7 +459,7 @@ body.noscroll{overflow: hidden;}
 	border:none;
 }
 .portfolio #list-projects{
-	width:77%;
+	width:80%;
 	/*float:left;*/
 	position:relative;z-index:1;
 }
