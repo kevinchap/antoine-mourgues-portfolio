@@ -214,8 +214,11 @@ function loadProject(id, background, top){
     $('#p-load').css('top', $('#list-projects button.project-'+id).offset().top+'px');
     $('#p-load').css('top', ($(window).height()/2)-150+'px'); 
 
-    // enlarge the loader section
+    // enlarge the loader section and push presentation block out
     $('#p-load').addClass('big');
+    setTimeout(function(){
+        $('.presentation').addClass('invisible');
+    }, 1520);
     setTimeout(function(){
         $('#p-load').css('top', 0);
         setTimeout(function(){
@@ -223,15 +226,18 @@ function loadProject(id, background, top){
         }, 1000);
     }, 1500);
 
-    // hide the loader section and show project list
+    // hide the loader section and show project list and the presentation block
     setTimeout(function(){
+        $('#p-load').addClass('change-transition-opacity');
         $('#p-load').removeClass('visible');
         $('.portfolio #list-projects > ul > li').css('visibility','visible');
+        $('.presentation').removeClass('invisible');
 
         // reset the loader section
         setTimeout(function(){
             $('.portfolio #list-projects > ul > li').css('opacity',1);
-            $('#p-load').removeClass('z-index');
+            $('#p-load').removeClass('change-transition-opacity');
+            $('#p-load').removeClass('zindex');
             $('#p-load').removeClass('big');
             $('#p-load').css('top', 'auto');
 
