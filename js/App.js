@@ -185,6 +185,7 @@ function showItemsProjects(){
 }
 
 function loadProject(id, background, top){
+    // keep buttons attribute and remove buttons attribute onclick
     var buttons = $('.portfolio #list-projects > ul > li button');
     var lesAttr=[];
     for(var i=0; i<buttons.length; i++){
@@ -193,9 +194,11 @@ function loadProject(id, background, top){
     }
     $('.portfolio #list-projects > ul > li button').attr('onclick','');
 
+    // hide project list
     $('.portfolio #list-projects > ul > li').css('opacity',0);
     $('.portfolio #list-projects > ul > li').css('visibility','hidden');
 
+    // add background to the loader section
     $('#p-load').attr('data-project', background);
     $('#p-load').css('background-image', 'url("./img/projets/'+background+'.jpg")');
     $('#p-load').css('background-repeat', 'no-repeat');
@@ -203,26 +206,36 @@ function loadProject(id, background, top){
     $('#p-load').css('background-size', 'cover');
     $('#p-load').css('-webkit-background-size', 'cover');
 
+    // show the loader section
     $('#p-load').addClass('visible');
     $('#p-load').addClass('zindex');
-    $('#p-load').addClass('big');
 
+    // move the loader section
     $('#p-load').css('top', $('#list-projects button.project-'+id).offset().top+'px');
     $('#p-load').css('top', ($(window).height()/2)-150+'px'); 
+
+    // enlarge the loader section
+    $('#p-load').addClass('big');
     setTimeout(function(){
         $('#p-load').css('top', 0);
         setTimeout(function(){
             $('#p-load').css('background-position', 'center center');
         }, 1000);
     }, 1500);
+
+    // hide the loader section and show project list
     setTimeout(function(){
         $('#p-load').removeClass('visible');
         $('.portfolio #list-projects > ul > li').css('visibility','visible');
+
+        // reset the loader section
         setTimeout(function(){
             $('.portfolio #list-projects > ul > li').css('opacity',1);
             $('#p-load').removeClass('z-index');
             $('#p-load').removeClass('big');
             $('#p-load').css('top', 'auto');
+
+            // reset onclick event on buttons
             setTimeout(function(){
                 for(var i=0; i<buttons.length; i++){
                     $(buttons[i]).attr('onclick', lesAttr[i]);
