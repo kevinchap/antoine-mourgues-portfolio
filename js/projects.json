@@ -5,56 +5,31 @@
       "job":"UI/UX Designer",
       "app":false,
       "wins":["fwa","awwwards"],
-      "background_item":"mundialmemories"
+      "background_item":"mundialmemories",
+      "back_top_pos":-26
    },
    {  
       "id":2,
       "name":"PANAM ALL STARZ",
       "job":"Project manager - Art director",
       "app":false,
-      "background_item":"panamallstarz"
+      "background_item":"panamallstarz",
+      "back_top_pos":-173
    },
    {  
       "id":3,
       "name":"TEDx CHAMPS-ÉLYSÉES EDUCATION",
       "job":"UI/UX Designer",
       "app":false,
-      "background_item":"ted"
+      "background_item":"ted",
+      "back_top_pos":-186
    },
    {  
       "id":4,
       "name":"LUBOO STUDIO",
       "job":"Art director",
       "app":false,
-      "background_item":"luboostudio"
-   },
-   {  
-      "id":5,
-      "name":"MUNDIAL MEMORIES",
-      "job":"UI/UX Designer",
-      "app":false,
-      "wins":["fwa","awwwards"],
-      "background_item":"mundialmemories"
-   },
-   {  
-      "id":6,
-      "name":"PANAM ALL STARZ",
-      "job":"Project manager - Art director",
-      "app":false,
-      "background_item":"panamallstarz"
-   },
-   {  
-      "id":7,
-      "name":"TEDx CHAMPS-ÉLYSÉES EDUCATION",
-      "job":"UI/UX Designer",
-      "app":false,
-      "background_item":"ted"
-   },
-   {  
-      "id":8,
-      "name":"LUBOO STUDIO",
-      "job":"Art director",
-      "app":false,
-      "background_item":"luboostudio"
+      "background_item":"luboostudio",
+      "back_top_pos":-225
    }
 ]

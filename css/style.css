@@ -470,23 +470,46 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio #list-projects > ul > li{
 	display: block;
-	width:100%;height:300px;
+	width:95%;height:300px;
+	position:relative;
+
+	opacity: 0;
+	visibility: hidden;
+	-moz-transform: translateX(-50px);
+	-webkit-transform: translateX(-50px);
+	-o-transform: translateX(-50px);
+	transform: translateX(-50px);
+	-webkit-transition: all .4s ease;
+  	transition: all .4s ease;
 }
-.portfolio #list-projects > ul > li a{
+.portfolio #list-projects > ul > li.show{
+	opacity: 1;
+	visibility: visible;
+	-moz-transform: translateX(0);
+	-webkit-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
+}
+.portfolio #list-projects > ul > li .project-background{
+	position:absolute;top:0;left:0;width:100%;height:100%;
+	opacity:0;visibility:hidden;
+	-webkit-transition: all .7s ease;
+  	transition: all .7s ease;
+}
+.portfolio #list-projects > ul > li:hover .project-background{
+	opacity:1;visibility:visible;
+}
+.portfolio #list-projects > ul > li button{
 	display:block;
 	height:100%;width:100%;
 	position:relative;
+	border:none;background:none;padding:0;text-align:left;
+	cursor:pointer;
 }
-.portfolio #list-projects > ul > li a.non-retina{
-	display: block;
-}
-.portfolio #list-projects > ul > li a.retina{
-	display: none;
-}
-.portfolio #list-projects > ul > li a:hover{
+.portfolio #list-projects > ul > li button:hover{
 	z-index: 2;
 }
-.portfolio #list-projects > ul > li a::after{
+.portfolio #list-projects > ul > li button::after{
 	content: '';
 	height:1px;
 	background-color: #76ffd8;
@@ -498,10 +521,10 @@ body.noscroll{overflow: hidden;}
 	-webkit-transition: all .4s .4s ease;
   	transition: all .4s .4s ease;
 }
-.portfolio #list-projects > ul > li.show a::after{
+.portfolio #list-projects > ul > li.show button::after{
 	width:250px;margin-left:-175px;
 }
-.portfolio #list-projects > ul > li a:hover::after{
+.portfolio #list-projects > ul > li button:hover::after{
 	background-color: transparent;
 	opacity: 0;
 	visibility: hidden;
@@ -509,12 +532,8 @@ body.noscroll{overflow: hidden;}
 .portfolio #list-projects .content-item{
 	position: relative;
 	height: 100%;width:100%;
-	background:white;
 	-webkit-transition: all .7s ease;
   	transition: all .7s ease;
-}
-.portfolio #list-projects .content-item:hover{
-	background: transparent;
 }
 .portfolio #list-projects .content-item::before{
 	height: 100%;
@@ -534,24 +553,6 @@ body.noscroll{overflow: hidden;}
 	position: absolute;
 	bottom:50px;left:50px;
 	overflow: visible;
-}
-.portfolio #list-projects .content-item div, .portfolio #list-projects .content-item ul{
-	opacity: 0;
-	visibility: hidden;
-	-moz-transform: translateX(-50px);
-	-webkit-transform: translateX(-50px);
-	-o-transform: translateX(-50px);
-	transform: translateX(-50px);
-	-webkit-transition: all .4s ease;
-  	transition: all .4s ease;
-}
-.portfolio #list-projects > ul > li.show .content-item div, .portfolio #list-projects > ul > li.show .content-item ul{
-	opacity: 1;
-	visibility: visible;
-	-moz-transform: translateX(0);
-	-webkit-transform: translateX(0);
-	-o-transform: translateX(0);
-	transform: translateX(0);
 }
 .portfolio #list-projects .content-item ul li{
 	display: inline-block;
@@ -719,6 +720,33 @@ body.noscroll{overflow: hidden;}
 	line-height:normal;
 }
 
+/** loader project **/
+#p-load{
+	position: absolute;
+	left:0;
+
+	z-index: -1;
+	opacity:0;
+	width:76%;
+	height: 300px;
+	-webkit-transition: opacity .5s ease, top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease;
+  	transition: opacity .5s ease, top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease;
+}
+/*#p-load[data-project="mundialmemories"], .project-background[data-project="mundialmemories"]{background-position: center -26px;}
+#p-load[data-project="panamallstarz"], .project-background[data-project="panamallstarz"]{background-position: center -180px;}
+#p-load[data-project="ted"], .project-background[data-project="ted"]{background-position: center -183px;}
+#p-load[data-project="luboostudio"], .project-background[data-project="luboostudio"]{background-position: center -227px;}*/
+#p-load.visible{
+	opacity: 1;
+}
+#p-load.zindex{
+	z-index:10;
+}
+#p-load.big{
+	width:100%;
+	height:100%;
+}
+
 /** RETINA **/
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and ( -moz-min-device-pixel-ratio: 2),
@@ -731,12 +759,6 @@ only screen and ( min-resolution: 2dppx)
 		background: url("../img/antoinemourgues@x2.png") no-repeat center center;
 		-webkit-background-size: 225%;
 		background-size: 225%;
-	}
-	.portfolio #list-projects > ul > li a.non-retina{
-		display: none;
-	}
-	.portfolio #list-projects > ul > li a.retina{
-		display: block;
 	}
 }
 

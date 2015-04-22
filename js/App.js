@@ -1,5 +1,13 @@
+"use strict";
+
+var settings = {
+    loaderTime:0,
+    home:false,
+    projects:false,
+    app:null
+}
+
 // Router
-var home, projects = false;
 var AppRouter = Backbone.Router.extend({
  
     // routes:{
@@ -40,11 +48,11 @@ var AppRouter = Backbone.Router.extend({
             slide(true);
         });
 
-        home = true;
+        settings.home = true;
     },
 
     projects:function () {
-        if(home!==true){
+        if(settings.home!==true){
             $('.home .menu-button, .home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
             $('.home, .portfolio, .home .content, .portfolio .content').addClass('slidedown');
             setTimeout(function(){
@@ -52,7 +60,7 @@ var AppRouter = Backbone.Router.extend({
                 setTimeout(function(){
                     showItemsProjects();
                 },2500);
-            }, 5500);
+            }, 4500);
         }else{
             setTimeout(function(){
                 $('.presentation, .portfolio .menu-button, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
@@ -64,40 +72,39 @@ var AppRouter = Backbone.Router.extend({
 
         detectMouseWheel('projects', false);
 
-        if(projects !== true){
+        if(settings.projects !== true){
             this.projectList = new ProjectList();
             this.projectList.fetch({success: function() {
-                $('#list-projects').html(new ProjectListView({model: app.projectList}).render().el);
+                $('#list-projects').html(new ProjectListView({model: settings.app.projectList}).render().el);
             }});
         }
 
-        projects = true;
+        settings.projects = true;
     },
  
     projectDetails:function (id) {
-        alert("project details");
+        alert(id);
     }
 });
 
 tpl.loadTemplates(['project-list-item'], function() {
-    app = new AppRouter();
+    settings.app = new AppRouter();
     Backbone.history.start();
 });
 
 loadingSite();
 
-var loaderTime=0;
 function loadingSite(){
     if($("body").hasClass("loaded")){
         $(".home-loader").addClass('displayNone');
     }else{
-        loaderTime++;
-        $(".home-loader .load-bar p").html(loaderTime+" %")
-        $(".home-loader .load-bar div").css("width", loaderTime+"%");
+        settings.loaderTime++;
+        $(".home-loader .load-bar p").html(settings.loaderTime+" %")
+        $(".home-loader .load-bar div").css("width", settings.loaderTime+"%");
         var timer = setTimeout(function() {
             loadingSite();
         }, 20);
-        if(loaderTime === 100){
+        if(settings.loaderTime === 100){
             clearTimeout(timer);
             $(".home-loader .to-fade").addClass('fade');
             $(".home-loader .panel").addClass('active');
@@ -175,6 +182,54 @@ function showItemsProjects(){
             }
         });
     }
+}
+
+function loadProject(id, background, top){
+    var buttons = $('.portfolio #list-projects > ul > li button');
+    var lesAttr=[];
+    for(var i=0; i<buttons.length; i++){
+        lesAttr.push($(buttons[i]).attr('onclick'));
+        console.log($(buttons[i]).attr('onclick'));
+    }
+    $('.portfolio #list-projects > ul > li button').attr('onclick','');
+
+    $('.portfolio #list-projects > ul > li').css('opacity',0);
+    $('.portfolio #list-projects > ul > li').css('visibility','hidden');
+
+    $('#p-load').attr('data-project', background);
+    $('#p-load').css('background-image', 'url("./img/projets/'+background+'.jpg")');
+    $('#p-load').css('background-repeat', 'no-repeat');
+    $('#p-load').css('background-position', 'center '+top+'px');
+    $('#p-load').css('background-size', 'cover');
+    $('#p-load').css('-webkit-background-size', 'cover');
+
+    $('#p-load').addClass('visible');
+    $('#p-load').addClass('zindex');
+    $('#p-load').addClass('big');
+
+    $('#p-load').css('top', $('#list-projects button.project-'+id).offset().top+'px');
+    $('#p-load').css('top', ($(window).height()/2)-150+'px'); 
+    setTimeout(function(){
+        $('#p-load').css('top', 0);
+        setTimeout(function(){
+            $('#p-load').css('background-position', 'center center');
+        }, 1000);
+    }, 1500);
+    setTimeout(function(){
+        $('#p-load').removeClass('visible');
+        $('.portfolio #list-projects > ul > li').css('visibility','visible');
+        setTimeout(function(){
+            $('.portfolio #list-projects > ul > li').css('opacity',1);
+            $('#p-load').removeClass('z-index');
+            $('#p-load').removeClass('big');
+            $('#p-load').css('top', 'auto');
+            setTimeout(function(){
+                for(var i=0; i<buttons.length; i++){
+                    $(buttons[i]).attr('onclick', lesAttr[i]);
+                }
+            }, 2000);
+        }, 500);
+    }, 3500);
 }
 
 

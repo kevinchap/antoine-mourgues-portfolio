@@ -3,7 +3,7 @@ var ProjectListItemView = Backbone.View.extend({
     tagName:"li",
   
     initialize:function () {
-        this.template = _.template(tpl.get('project-list-item'));
+		this.template = _.template(tpl.get('project-list-item'));
     },
 
     render:function (eventName) {
