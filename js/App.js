@@ -4,7 +4,8 @@ var settings = {
     loaderTime:0,
     home:false,
     projects:false,
-    app:null
+    app:null,
+    clickOn:true
 }
 
 // Router
@@ -185,70 +186,71 @@ function showItemsProjects(){
 }
 
 function loadProject(id, background, top){
-    // keep buttons attribute and remove buttons attribute onclick
-    var buttons = $('.portfolio #list-projects > ul > li button');
-    var lesAttr=[];
-    for(var i=0; i<buttons.length; i++){
-        lesAttr.push($(buttons[i]).attr('onclick'));
-        console.log($(buttons[i]).attr('onclick'));
-    }
-    $('.portfolio #list-projects > ul > li button').attr('onclick','');
+    if(settings.clickOn){
+        settings.clickOn=false;
 
-    // hide project list
-    $('.portfolio #list-projects > ul > li').css('opacity',0);
-    $('.portfolio #list-projects > ul > li').css('visibility','hidden');
+        // hide project list
+        // $('.portfolio #list-projects > ul > li').css('opacity',0);
+        // $('.portfolio #list-projects > ul > li').css('visibility','hidden');
 
-    // add background to the loader section
-    $('#p-load').attr('data-project', background);
-    $('#p-load').css('background-image', 'url("./img/projets/'+background+'.jpg")');
-    $('#p-load').css('background-repeat', 'no-repeat');
-    $('#p-load').css('background-position', 'center '+top+'px');
-    $('#p-load').css('background-size', 'cover');
-    $('#p-load').css('-webkit-background-size', 'cover');
+        // init the loader section
+        // var settings = {
+        //     loaderTime:0,
+        //     home:false,
+        //     projects:false,
+        //     app:null,
+        //     clickOn:true
+        // }
 
-    // show the loader section
-    $('#p-load').addClass('visible');
-    $('#p-load').addClass('zindex');
+        // add background to the loader section
+        // $('#p-load').attr('data-project', background);
+        // $('#p-load').css('background-image', 'url("./img/projets/'+background+'.jpg")');
+        // $('#p-load').css('background-repeat', 'no-repeat');
+        // $('#p-load').css('background-position', 'center '+top+'px');
+        // $('#p-load').css('background-size', 'cover');
+        // $('#p-load').css('-webkit-background-size', 'cover');
 
-    // move the loader section
-    $('#p-load').css('top', $('#list-projects button.project-'+id).offset().top+'px');
-    $('#p-load').css('top', ($(window).height()/2)-150+'px'); 
+        // show the loader section
+        // $('#p-load').addClass('visible');
+        // $('#p-load').addClass('zindex');
 
-    // enlarge the loader section and push presentation block out
-    $('#p-load').addClass('big');
-    setTimeout(function(){
-        $('.presentation').addClass('invisible');
-    }, 1520);
-    setTimeout(function(){
-        $('#p-load').css('top', 0);
+        // move the loader section
+        // $('#p-load').css('top', $('#list-projects button.project-'+id).offset().top+'px');
+        // $('#p-load').css('top', ($(window).height()/2)-150+'px'); 
+
+        // enlarge the loader section and push presentation block out
+        // $('#p-load').addClass('big');
         setTimeout(function(){
-            $('#p-load').css('background-position', 'center center');
-        }, 1000);
-    }, 1500);
-
-    // hide the loader section and show project list and the presentation block
-    setTimeout(function(){
-        $('#p-load').addClass('change-transition-opacity');
-        $('#p-load').removeClass('visible');
-        $('.portfolio #list-projects > ul > li').css('visibility','visible');
-        $('.presentation').removeClass('invisible');
-
-        // reset the loader section
+            // $('.presentation').addClass('invisible');
+        }, 1520);
         setTimeout(function(){
-            $('.portfolio #list-projects > ul > li').css('opacity',1);
-            $('#p-load').removeClass('change-transition-opacity');
-            $('#p-load').removeClass('zindex');
-            $('#p-load').removeClass('big');
-            $('#p-load').css('top', 'auto');
-
-            // reset onclick event on buttons
+            // $('#p-load').css('top', 0);
             setTimeout(function(){
-                for(var i=0; i<buttons.length; i++){
-                    $(buttons[i]).attr('onclick', lesAttr[i]);
-                }
-            }, 2000);
-        }, 500);
-    }, 3500);
+                // $('#p-load').css('background-position', 'center center');
+            }, 1000);
+        }, 1500);
+
+        // hide the loader section and show project list and the presentation block
+        setTimeout(function(){
+            // $('#p-load').addClass('change-transition-opacity');
+            // $('#p-load').removeClass('visible');
+            // $('.portfolio #list-projects > ul > li').css('visibility','visible');
+            // $('.presentation').removeClass('invisible');
+
+            // reset the loader section
+            setTimeout(function(){
+                // $('.portfolio #list-projects > ul > li').css('opacity',1);
+                // $('#p-load').removeClass('change-transition-opacity');
+                // $('#p-load').removeClass('zindex');
+                // $('#p-load').removeClass('big');
+                // $('#p-load').css('top', 'auto');
+                setTimeout(function(){
+                    settings.clickOn=true;
+                    console.log('done');
+                }, 500);
+            }, 500);
+        }, 3500);
+    }
 }
 
 

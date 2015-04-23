@@ -459,7 +459,7 @@ body.noscroll{overflow: hidden;}
 	border:none;
 }
 .portfolio #list-projects{
-	width:78%;
+	width:100%;
 	/*float:left;*/
 	position:relative;z-index:1;
 }
@@ -470,7 +470,7 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio #list-projects > ul > li{
 	display: block;
-	width:99%;height:300px;
+	width:100%;height:300px;
 	position:relative;
 
 	opacity: 0;
@@ -491,7 +491,7 @@ body.noscroll{overflow: hidden;}
 	transform: translateX(0);
 }
 .portfolio #list-projects > ul > li .project-background{
-	position:absolute;top:0;left:0;width:100%;height:100%;
+	position:absolute;top:0;left:0;width:76%;height:100%;
 	opacity:0;visibility:hidden;
 	-webkit-transition: all .7s ease;
   	transition: all .7s ease;
@@ -734,8 +734,8 @@ body.noscroll{overflow: hidden;}
 	opacity:0;
 	width:76%;
 	height: 300px;
-	-webkit-transition: top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease;
-  	transition: top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease;
+	-webkit-transition: top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease, background-position .5s ease;
+  	transition: top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease, background-position .5s ease;
 }
 /*#p-load[data-project="mundialmemories"], .project-background[data-project="mundialmemories"]{background-position: center -26px;}
 #p-load[data-project="panamallstarz"], .project-background[data-project="panamallstarz"]{background-position: center -180px;}
