@@ -189,27 +189,48 @@ function showItemsProjects(){
 function loadProject(id, background, top){
     if(settings.clickOn){
         settings.clickOn=false;
+        var id = id;
 
         // hide project list
-        // $('.portfolio #list-projects > ul > li').css('opacity',0);
-        // $('.portfolio #list-projects > ul > li').css('visibility','hidden');
-
-        // init the loader section
-        // var settings = {
-        //     loaderTime:0,
-        //     home:false,
-        //     projects:false,
-        //     app:null,
-        //     clickOn:true
-        // }
+        $('.portfolio #list-projects > ul > li').css('opacity',0);
+        $('.portfolio #list-projects > ul > li').css('visibility','hidden');
 
         // add background to the loader section
         // $('#p-load').attr('data-project', background);
-        // $('#p-load').css('background-image', 'url("./img/projets/'+background+'.jpg")');
-        // $('#p-load').css('background-repeat', 'no-repeat');
-        // $('#p-load').css('background-position', 'center '+top+'px');
-        // $('#p-load').css('background-size', 'cover');
-        // $('#p-load').css('-webkit-background-size', 'cover');
+        $('#p-load').css({
+            "background": 'url(./img/projets/'+background+'.jpg) no-repeat center '+top+'px',
+            "-webkit-background-size": 'cover',
+            "background-size": 'cover',
+            "opacity":1,
+            "z-index":10,
+            "top":$('#list-projects button.project-'+id).offset().top+'px',
+            "-webkit-transition": 'top 1s ease, width .5s ease, height 1s ease',
+            "transition": 'top 1s ease, width .5s ease, height 1s ease'
+        });
+        setTimeout(function(){
+            $('#p-load').css({
+                "top": ($(window).height()/2)-150+'px'
+            });
+        }, 500);
+        setTimeout(function(){
+            $('#p-load').css({
+                "width": '100%',
+                "-webkit-transition": 'top 1s ease, width .5s ease, height 1s ease, background-position 1s ease',
+                "transition": 'top 1s ease, width .5s ease, height 1s ease, background-position 1s ease'
+            });
+            $('.presentation').addClass('invisible');
+            setTimeout(function(){
+                $('#p-load').css({
+                    "height": '100%',
+                    "top": '0'
+                });
+                if(id!==1){
+                    $('#p-load').css({
+                        "background-position": 'center center'
+                    });
+                }
+            }, 1000);
+        }, 1500);
 
         // show the loader section
         // $('#p-load').addClass('visible');
@@ -247,7 +268,6 @@ function loadProject(id, background, top){
                 // $('#p-load').css('top', 'auto');
                 setTimeout(function(){
                     settings.clickOn=true;
-                    console.log('done');
                 }, 500);
             }, 500);
         }, 3500);

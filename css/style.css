@@ -29,17 +29,33 @@ body.noscroll{overflow: hidden;}
 	background: #333333;
 }
 .home-loader .top{
-	top:0;
+	-moz-transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
 	-webkit-transition: all 2s ease-out;
   	transition: all 2s ease-in-out;
 }
-.home-loader .top.active{top:-50%;}
+.home-loader .top.active{
+	-moz-transform: translateY(-100%);
+	-webkit-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
 .home-loader .bottom{
-	bottom:0;
+	-moz-transform: translateY(100%);
+	-webkit-transform: translateY(100%);
+	-o-transform: translateY(100%);
+	transform: translateY(100%);
 	-webkit-transition: all 2s ease-out;
   	transition: all 2s ease-in-out;
 }
-.home-loader .bottom.active{bottom:-50%;}
+.home-loader .bottom.active{
+	-moz-transform: translateY(200%);
+	-webkit-transform: translateY(200%);
+	-o-transform: translateY(200%);
+	transform: translateY(200%);
+}
 .home-loader .name{
 	position:absolute;
 	top:25%;margin-top:-22px;
@@ -729,18 +745,14 @@ body.noscroll{overflow: hidden;}
 #p-load{
 	position: absolute;
 	left:0;
-
 	z-index: -1;
 	opacity:0;
 	width:76%;
 	height: 300px;
-	-webkit-transition: top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease, background-position .5s ease;
-  	transition: top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease, background-position .5s ease;
+
+	/*-webkit-transition: top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease, background-position .5s ease;
+  	transition: top 1s .5s ease, width .5s 1.5s ease, height .5s 2s ease, background-position .5s ease;*/
 }
-/*#p-load[data-project="mundialmemories"], .project-background[data-project="mundialmemories"]{background-position: center -26px;}
-#p-load[data-project="panamallstarz"], .project-background[data-project="panamallstarz"]{background-position: center -180px;}
-#p-load[data-project="ted"], .project-background[data-project="ted"]{background-position: center -183px;}
-#p-load[data-project="luboostudio"], .project-background[data-project="luboostudio"]{background-position: center -227px;}*/
 #p-load.visible{
 	opacity: 1;
 }

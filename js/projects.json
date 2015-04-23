@@ -22,7 +22,7 @@
       "job":"UI/UX Designer",
       "app":false,
       "background_item":"ted",
-      "back_top_pos":-186
+      "back_top_pos":-324
    },
    {  
       "id":4,
@@ -30,6 +30,6 @@
       "job":"Art director",
       "app":false,
       "background_item":"luboostudio",
-      "back_top_pos":-200
+      "back_top_pos":-368
    }
 ]
