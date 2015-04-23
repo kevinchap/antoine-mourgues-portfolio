@@ -165,6 +165,7 @@ function slide(down){
 
 function showItemsProjects(){
     var lis = $('.portfolio #list-projects > ul > li');
+    $(lis).css('width', $('.presentation').offset().left+'px')
     var nbAlreadyInView = parseInt($(window).height()/300);
     if(($(window).height()/300 - Math.floor($(window).height()/300)) > 0.5){
         nbAlreadyInView++;
