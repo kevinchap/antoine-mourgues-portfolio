@@ -195,8 +195,7 @@ function loadProject(id, background, top){
         $('.portfolio #list-projects > ul > li').css('opacity',0);
         $('.portfolio #list-projects > ul > li').css('visibility','hidden');
 
-        // add background to the loader section
-        // $('#p-load').attr('data-project', background);
+        // add background to the loader section and show the loader
         $('#p-load').css({
             "background": 'url(./img/projets/'+background+'.jpg) no-repeat center '+top+'px',
             "-webkit-background-size": 'cover',
@@ -207,17 +206,20 @@ function loadProject(id, background, top){
             "-webkit-transition": 'top 1s ease, width .5s ease, height 1s ease',
             "transition": 'top 1s ease, width .5s ease, height 1s ease'
         });
+        // move the loader section to the middle of page
         setTimeout(function(){
             $('#p-load').css({
                 "top": ($(window).height()/2)-150+'px'
             });
         }, 500);
+        // enlarge the loader section and add new transition
         setTimeout(function(){
             $('#p-load').css({
                 "width": '100%',
-                "-webkit-transition": 'top 1s ease, width .5s ease, height 1s ease, background-position 1s ease',
-                "transition": 'top 1s ease, width .5s ease, height 1s ease, background-position 1s ease'
+                "-webkit-transition": 'top 1s ease, width .5s ease, height 1s ease, background-position 1s ease, opacity .5s ease',
+                "transition": 'top 1s ease, width .5s ease, height 1s ease, background-position 1s ease, opacity .5s ease'
             });
+            // hide presentation part
             $('.presentation').addClass('invisible');
             setTimeout(function(){
                 $('#p-load').css({
@@ -231,45 +233,29 @@ function loadProject(id, background, top){
                 }
             }, 1000);
         }, 1500);
-
-        // show the loader section
-        // $('#p-load').addClass('visible');
-        // $('#p-load').addClass('zindex');
-
-        // move the loader section
-        // $('#p-load').css('top', $('#list-projects button.project-'+id).offset().top+'px');
-        // $('#p-load').css('top', ($(window).height()/2)-150+'px'); 
-
-        // enlarge the loader section and push presentation block out
-        // $('#p-load').addClass('big');
+        // end of animation
         setTimeout(function(){
-            // $('.presentation').addClass('invisible');
-        }, 1520);
-        setTimeout(function(){
-            // $('#p-load').css('top', 0);
+            // show list item project and presentation part
+            $('.portfolio #list-projects > ul > li').css('opacity',1);
+            $('.portfolio #list-projects > ul > li').css('visibility','visible');
+            $('.presentation').removeClass('invisible');
+            $('#p-load').css({
+                "opacity":0
+            });
+            // reset loader section
             setTimeout(function(){
-                // $('#p-load').css('background-position', 'center center');
-            }, 1000);
-        }, 1500);
-
-        // hide the loader section and show project list and the presentation block
-        setTimeout(function(){
-            // $('#p-load').addClass('change-transition-opacity');
-            // $('#p-load').removeClass('visible');
-            // $('.portfolio #list-projects > ul > li').css('visibility','visible');
-            // $('.presentation').removeClass('invisible');
-
-            // reset the loader section
-            setTimeout(function(){
-                // $('.portfolio #list-projects > ul > li').css('opacity',1);
-                // $('#p-load').removeClass('change-transition-opacity');
-                // $('#p-load').removeClass('zindex');
-                // $('#p-load').removeClass('big');
-                // $('#p-load').css('top', 'auto');
+                $('#p-load').css({
+                    "background": 'none',
+                    "z-index":-1,
+                    "top":'auto',
+                    "width":'76%',
+                    "height":'300px'
+                });
                 setTimeout(function(){
+                    // allow to click on item
                     settings.clickOn=true;
                 }, 500);
-            }, 500);
+            }, 1000);
         }, 3500);
     }
 }
