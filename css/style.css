@@ -459,7 +459,7 @@ body.noscroll{overflow: hidden;}
 	border:none;
 }
 .portfolio #list-projects{
-	width:80%;
+	width:78%;
 	/*float:left;*/
 	position:relative;z-index:1;
 }
@@ -470,7 +470,7 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio #list-projects > ul > li{
 	display: block;
-	width:97%;height:300px;
+	width:99%;height:300px;
 	position:relative;
 
 	opacity: 0;
