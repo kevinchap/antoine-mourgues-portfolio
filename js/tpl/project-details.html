@@ -39,40 +39,47 @@
        		</div>
        </section>
    <% } %>
+   <section class='last-section'>
+   		<div class="button"><a href="<%= url %>" target="_blank">see the project</a></div>
+   		<p>Thanks for watching !</p>
+   		<p>Use the arrows  to discover next project</p>
+   </section>
 </div>
-<section class="presentation-project">
-	<div>
-		<h2><%= name %></h2>
-		<% if(typeof wins !== "undefined"){ %>
-			<ul class='wins'>
-				<% for(var win in wins) { %>
-		           <li><img src="./img/<%= wins[win] %>-mini.png" alt="R&eacute;compense <%= wins[win] %> pour <%= name %>."/></li>
-		       <% } %>
+<section class="presentation-project-container">
+	<section class="presentation-project">
+		<div>
+			<h2><%= name %></h2>
+			<% if(typeof wins !== "undefined"){ %>
+				<ul class='wins'>
+					<% for(var win in wins) { %>
+			           <li><img src="./img/<%= wins[win] %>-mini.png" alt="R&eacute;compense <%= wins[win] %> pour <%= name %>."/></li>
+			       <% } %>
+				</ul>
+			<% } %>
+		</div>
+		<div>
+			<ul class="work-details-title">
+				<li>Role</li>
+				<li>Client</li>
+				<li>Agency</li>
+				<li>Date</li>
 			</ul>
-		<% } %>
-	</div>
-	<div>
-		<ul class="work-details-title">
-			<li>Role</li>
-			<li>Client</li>
-			<li>Agency</li>
-			<li>Date</li>
+			<ul class="work-details">
+				<li><%= job %></li>
+				<li><%= client %></li>
+				<li><%= agence %></li>
+				<li><%= date %></li>
+			</ul>
+		</div>
+		<div>
+			<p><%= description %></p>
+		</div>
+		<ul class="nav">
+			<li class='prev'></li>
+			<li class='close'><a href="#"><span>close</span></a></li>
+			<li class='next'></li>
 		</ul>
-		<ul class="work-details">
-			<li><%= job %></li>
-			<li><%= client %></li>
-			<li><%= agence %></li>
-			<li><%= date %></li>
-		</ul>
-	</div>
-	<div>
-		<p><%= description %></p>
-	</div>
-	<ul class="nav">
-		<li class='prev'></li>
-		<li class='close'><a href="#"><span>close</span></a></li>
-		<li class='next'></li>
-	</ul>
+	</section>
 </section>
 <script>
 	$(function(){

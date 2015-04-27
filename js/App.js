@@ -111,7 +111,7 @@ var AppRouter = Backbone.Router.extend({
                     $('.menu-button, #project .presentation-project div, #project .presentation-project .nav').addClass('show');
                 }, 500);
                 setTimeout(function(){
-                    $('#project .one-section').css('width', $('#project .presentation-project').offset().left+'px');
+                    $('#project .one-section, #project .last-section').css('width', $('#project .presentation-project-container').offset().left+'px');
                     $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover').addClass('show');
                     setTimeout(function(){
                         $('.detail-project').addClass('scroll');
@@ -137,8 +137,19 @@ var AppRouter = Backbone.Router.extend({
                     $('.menu-button, #project .presentation-project div, #project .presentation-project .nav').addClass('show');
                 }, 500);
                 setTimeout(function(){
-                    $('#project .one-section').css('width', $('#project .presentation-project').offset().left+'px');
+                    $('#project .one-section, #project .last-section').css('width', $('#project .presentation-project-container').offset().left+'px');
                     $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover').addClass('show');
+                    setTimeout(function(){
+                        $('.detail-project').addClass('scroll');
+                        var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+                        $(window).bind(mousewheelevt, function(e){
+                            if($('.detail-project section:first-child').offset().top < 0){
+                                $('#project .back-blur').addClass('blur');
+                            }else{
+                                $('#project .back-blur').removeClass('blur');
+                            }
+                        });
+                    }, 3000);
                 }, 3000);
             }, 500);
         }
