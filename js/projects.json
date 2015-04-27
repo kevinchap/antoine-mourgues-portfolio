@@ -11,7 +11,25 @@
       "app":false,
       "wins":["fwa","awwwards"],
       "background_item":"mundialmemories",
-      "back_top_pos":-26
+      "back_top_pos":-26,
+      "mockups":[
+         {
+            "image":1,
+            "title":"Timeline"
+         },
+         {
+            "image":2,
+            "title":"Match légendaire"
+         },
+         {
+            "image":3,
+            "title":"Temps additionnel"
+         },
+         {
+            "image":4,
+            "title":"Match exploit"
+         }
+      ]
    },
    {  
       "id":2,
@@ -24,7 +42,25 @@
       "description": "",
       "app":false,
       "background_item":"panamallstarz",
-      "back_top_pos":-173
+      "back_top_pos":-173,
+      "mockups":[
+         {
+            "image":1,
+            "title":"Timeline"
+         },
+         {
+            "image":2,
+            "title":"Match légendaire"
+         },
+         {
+            "image":3,
+            "title":"Temps additionnel"
+         },
+         {
+            "image":4,
+            "title":"Match exploit"
+         }
+      ]
    },
    {  
       "id":3,
@@ -37,7 +73,25 @@
       "description": "",
       "app":false,
       "background_item":"ted",
-      "back_top_pos":-324
+      "back_top_pos":-324,
+      "mockups":[
+         {
+            "image":1,
+            "title":"Timeline"
+         },
+         {
+            "image":2,
+            "title":"Match légendaire"
+         },
+         {
+            "image":3,
+            "title":"Temps additionnel"
+         },
+         {
+            "image":4,
+            "title":"Match exploit"
+         }
+      ]
    },
    {  
       "id":4,
@@ -50,6 +104,24 @@
       "description": "",
       "app":false,
       "background_item":"luboostudio",
-      "back_top_pos":-300
+      "back_top_pos":-300,
+      "mockups":[
+         {
+            "image":1,
+            "title":"Timeline"
+         },
+         {
+            "image":2,
+            "title":"Match légendaire"
+         },
+         {
+            "image":3,
+            "title":"Temps additionnel"
+         },
+         {
+            "image":4,
+            "title":"Match exploit"
+         }
+      ]
    }
 ]

@@ -765,10 +765,23 @@ body.noscroll{overflow: hidden;}
 	top:0;left:0;
 	width:100%;height:100%;
 }
-#project .back-fixed{
+#project .back-fixed, #project .back-blur, #project .filter-back{
 	position:fixed;
 	top:0;left:0;
 	width:100%;height:100%;
+	-webkit-transition: all .5s ease;
+  	transition: all .5s ease;
+}
+#project .back-blur.blur{
+	-webkit-filter: blur(4px);
+	-moz-filter: blur(4px);
+	-o-filter: blur(4px);
+	-ms-filter: blur(4px);
+	filter: blur(4px);
+}
+#project .filter-back{
+	background:transparent;
+	background:rgba(0,0,0,.3);
 }
 #project .title .client{
 	position:absolute;
@@ -793,6 +806,7 @@ body.noscroll{overflow: hidden;}
 }
 #project .scroll-discover{
 	position:absolute;
+	width:100%;
 	bottom:0;
 	text-align:center;
 
@@ -815,12 +829,12 @@ body.noscroll{overflow: hidden;}
 	display:block;
 	margin-bottom:10px;
 	font-family:"ProximaNova-Regular";
-	font-size:11px;font-size:1.1rem;
+	font-size:10px;font-size:1rem;
 	text-transform:uppercase;
 }
 #project .scroll-discover .scroll-line{
 	display:block;
-	width:100%;height:113px;
+	width:100%;height:90px;
 	background:url(../img/scroll-discover.png) no-repeat center center;
 }
 #project .scroll-discover .scroll-line .losange{
@@ -845,9 +859,9 @@ body.noscroll{overflow: hidden;}
 		opacity:1;
 	}
 	100%{
-		-ms-transform: translateY(113px);
-		-webkit-transform: translateY(113px);
-		transform: translateY(113px);
+		-ms-transform: translateY(90px);
+		-webkit-transform: translateY(90px);
+		transform: translateY(90px);
 		opacity:0;
 	}
 } 
@@ -957,7 +971,7 @@ body.noscroll{overflow: hidden;}
 }
 #project .presentation-project .nav{
 	position:absolute;
-	width:76%;bottom:50px;
+	width:76%;bottom:25px;
 	text-align:center;
 
 	opacity:0;
@@ -982,7 +996,7 @@ body.noscroll{overflow: hidden;}
 }
 #project .presentation-project .nav a{
 	background:none;border:none;
-	width:40px;height:65px;
+	width:auto;height:50px;
 	display:table-cell;
   	vertical-align:bottom;
   	font-family:"SourceSansPro-Light";
@@ -998,7 +1012,7 @@ body.noscroll{overflow: hidden;}
     -webkit-transition: all .5s ease;
   	transition: all .5s ease;
 }
-#project .presentation-project .nav a:hover span{
+#project .presentation-project .nav:hover a span{
 	opacity:1;
 	-ms-transform: translateY(0);
     -webkit-transform: translateY(0);
@@ -1011,16 +1025,83 @@ body.noscroll{overflow: hidden;}
 	position: relative;
 	top:0;left:0;
 	width:100%;height:100%;
+}
+#project .detail-project.scroll{
 	overflow-y: scroll;
 }
-#project .detail-project .first-content{
-	width:100%;height:100%;
+#project .detail-project .one-section{
+	position:relative;
+	height:100%;
 }
-#project .detail-project .first-content::before{
+#project .detail-project .one-section::before{
 	height: 100%;
 	content: '';
 	display: inline-block;
 	vertical-align: middle;
+}
+#project .detail-project h2{font-size:40px;font-size:4rem;}
+#project .detail-project .one-mockup div{
+	display:inline-block;
+	vertical-align:middle;
+	width:99%;
+	text-align:center;
+}
+#project .detail-project .one-mockup .fake-browser {
+	width: 80%;
+	height: auto;
+	background-color: #dbdbdb;
+	padding: 16px;
+	text-align: left;
+	-moz-border-radius-topleft: 5px;
+	-webkit-border-top-left-radius: 5px;
+	border-top-left-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-webkit-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#project .detail-project .one-mockup .fake-browser .dots, #project .detail-project .one-mockup .fake-browser .dots span, #project .detail-project .one-mockup .fake-browser .input {
+  display: inline-block;
+  vertical-align: middle;
+}
+#project .detail-project .one-mockup .fake-browser .dots {
+  margin-right: 15px;
+}
+#project .detail-project .one-mockup .fake-browser .dots span {
+  margin-right: 3px;
+  height: 10px;
+  width: 10px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+#project .detail-project .one-mockup .fake-browser .dots span:nth-child(1) {
+  background-color: #fc605b;
+}
+#project .detail-project .one-mockup .fake-browser .dots span:nth-child(2) {
+  background-color: #fdbe41;
+}
+#project .detail-project .one-mockup .fake-browser .dots span:nth-child(3) {
+  background-color: #33c748;
+}
+#project .detail-project .one-mockup .fake-browser .input {
+  width: 90%;
+  text-align: center;
+  font-family:"ProximaNova-Regular";
+  font-size:14px;font-size:1.4rem;
+  color:black;
+  text-transform:uppercase;
+}
+#project .detail-project .one-mockup img{
+	max-width:80%;
+	-moz-border-radius-bottom-left: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	-moz-border-radius-bottom-right: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 /** RETINA **/

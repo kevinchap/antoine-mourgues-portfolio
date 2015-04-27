@@ -3,8 +3,14 @@
 <% }else{ %>
 	<div class="back-fixed" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center <%= back_top_pos %>px;-webkit-background-size: cover;background-size: cover;"></div>
 <% } %>
+<% if(id !== 1){ %>
+	<div class="back-blur" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center center;-webkit-background-size: cover;background-size: cover;"></div>
+<% }else{ %>
+	<div class="back-blur" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center <%= back_top_pos %>px;-webkit-background-size: cover;background-size: cover;"></div>
+<% } %>
+<div class="filter-back"></div>
 <div class="detail-project">
-	<section class="first-content">
+	<section class="one-section">
 		<div class="title">
 			<div class='client'><img src="./img/projets/<%= background_item %>-client.png" alt="Projet <%= name %> réalisé pour <%= client %>"></div>
             <h2><%= name %></h2>
@@ -18,6 +24,21 @@
         	</div>
         </div>
 	</section>
+	<% for(var mockup in mockups) { %>
+       <section class='one-section one-mockup'>
+       		<div>
+       			<div class='fake-browser'>
+					<span class='dots'>
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+					<span class='input'><%= mockups[mockup].title %></span>
+				</div>
+       			<img src="./img/projets/mockups/<%= background_item %>-<%= mockups[mockup].image %>.jpg" alt="<%= name %> mockup : <%= mockups[mockup].title %>">
+       		</div>
+       </section>
+   <% } %>
 </div>
 <section class="presentation-project">
 	<div>
