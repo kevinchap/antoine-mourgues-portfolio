@@ -35,10 +35,17 @@ var AppRouter = Backbone.Router.extend({
         "projects":"projects",
         "projects/:id":"projectDetails"
     },
+
+    initialize:function () {
+        this.projectList = new ProjectList();
+    },
  
     home:function () {
         setTimeout(function(){
-            $('.home .menu-button, .home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+            $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+            setTimeout(function(){
+                $('.menu-button').addClass('show');
+            }, 2500);
         }, 4500);
 
         setTimeout(function(){
@@ -54,17 +61,23 @@ var AppRouter = Backbone.Router.extend({
 
     projects:function () {
         if(settings.home!==true){
-            $('.home .menu-button, .home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+            $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
             $('.home, .portfolio, .home .content, .portfolio .content').addClass('slidedown');
             setTimeout(function(){
-                $('.presentation, .portfolio .menu-button, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                setTimeout(function(){
+                    $('.menu-button').addClass('show');
+                }, 500);
                 setTimeout(function(){
                     showItemsProjects();
                 },2500);
             }, 4500);
         }else{
             setTimeout(function(){
-                $('.presentation, .portfolio .menu-button, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                setTimeout(function(){
+                    $('.menu-button').addClass('show');
+                }, 500);
                 setTimeout(function(){
                     showItemsProjects();
                 },2500);
@@ -74,7 +87,6 @@ var AppRouter = Backbone.Router.extend({
         detectMouseWheel('projects', false);
 
         if(settings.projects !== true){
-            this.projectList = new ProjectList();
             this.projectList.fetch({success: function() {
                 $('#list-projects').html(new ProjectListView({model: settings.app.projectList}).render().el);
             }});
@@ -84,11 +96,45 @@ var AppRouter = Backbone.Router.extend({
     },
  
     projectDetails:function (id) {
-        alert(id);
+        $('#project').addClass('visible');
+
+        if(settings.projects!==true){
+            this.projectList.fetch({success: function() {
+                settings.app.project = settings.app.projectList.get(id);
+                settings.app.projectView = new ProjectView({model:settings.app.project});
+                $('#project').html(settings.app.projectView.render().el);
+            }});
+
+            setTimeout(function(){
+                $('#project .presentation-project').addClass('show');
+                setTimeout(function(){
+                    $('.menu-button, #project .presentation-project div, #project .presentation-project .nav').addClass('show');
+                }, 500);
+                setTimeout(function(){
+                    $('#project .title, #project .scroll-discover').css('width', $('#project .presentation-project').offset().left+'px');
+                    $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover').addClass('show');
+                }, 3000);
+            }, 4500);
+        }else{
+            this.project = this.projectList.get(id);
+            this.projectView = new ProjectView({model:this.project});
+            $('#project').html(this.projectView.render().el);
+
+            setTimeout(function(){
+                $('#project .presentation-project').addClass('show');
+                setTimeout(function(){
+                    $('.menu-button, #project .presentation-project div, #project .presentation-project .nav').addClass('show');
+                }, 500);
+                setTimeout(function(){
+                    $('#project .title, #project .scroll-discover').css('width', $('#project .presentation-project').offset().left+'px');
+                    $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover').addClass('show');
+                }, 3000);
+            }, 500);
+        }
     }
 });
 
-tpl.loadTemplates(['project-list-item'], function() {
+tpl.loadTemplates(['project-list-item', 'project-details'], function() {
     settings.app = new AppRouter();
     Backbone.history.start();
 });
@@ -142,6 +188,7 @@ function detectMouseWheel(route, dir){
 }
 
 function slide(down){
+    $('.menu-button').removeClass('show');
     if(down === true){
         location.replace("#projects");
         $('.home .content').addClass('slidedown');
@@ -189,7 +236,6 @@ function showItemsProjects(){
 function loadProject(id, background, top){
     if(settings.clickOn){
         settings.clickOn=false;
-        var id = id;
 
         // hide project list
         $('.portfolio #list-projects > ul > li').css('opacity',0);
@@ -221,6 +267,7 @@ function loadProject(id, background, top){
             });
             // hide presentation part
             $('.presentation').addClass('invisible');
+            $('.menu-button').removeClass('show');
             setTimeout(function(){
                 $('#p-load').css({
                     "height": '100%',
@@ -242,6 +289,8 @@ function loadProject(id, background, top){
             $('#p-load').css({
                 "opacity":0
             });
+            // go on project
+            location.replace("#projects/"+id);
             // reset loader section
             setTimeout(function(){
                 $('#p-load').css({
