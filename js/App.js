@@ -111,7 +111,11 @@ var AppRouter = Backbone.Router.extend({
                     $('.menu-button, #project .presentation-project div, #project .presentation-project .nav').addClass('show');
                 }, 500);
                 setTimeout(function(){
-                    $('#project .one-section, #project .last-section').css('width', $('#project .presentation-project-container').offset().left+'px');
+                    if(id%2 === 0){
+                        $('#project .contain-sections').css('width', $('#project').width()-$('#project .presentation-project-container').width()+'px');
+                    }else{
+                        $('#project .contain-sections').css('width', $('#project .presentation-project-container').offset().left+'px');
+                    }
                     $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover').addClass('show');
                     setTimeout(function(){
                         $('.detail-project').addClass('scroll');
@@ -137,7 +141,11 @@ var AppRouter = Backbone.Router.extend({
                     $('.menu-button, #project .presentation-project div, #project .presentation-project .nav').addClass('show');
                 }, 500);
                 setTimeout(function(){
-                    $('#project .one-section, #project .last-section').css('width', $('#project .presentation-project-container').offset().left+'px');
+                    if(id%2 === 0){
+                        $('#project .contain-sections').css('width', $('#project').width()-$('#project .presentation-project-container').width()+'px');
+                    }else{
+                        $('#project .contain-sections').css('width', $('#project .presentation-project-container').offset().left+'px');
+                    }
                     $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover').addClass('show');
                     setTimeout(function(){
                         $('.detail-project').addClass('scroll');

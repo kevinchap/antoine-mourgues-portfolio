@@ -890,6 +890,9 @@ body.noscroll{overflow: hidden;}
 	top:0;right:0;
 	width:24%;height:100%;
 }
+#project .presentation-project-container.proj-left{
+	right:auto;left:0;
+}
 #project .presentation-project{
 	position:relative;
 	top:0;right:0;
@@ -907,6 +910,11 @@ body.noscroll{overflow: hidden;}
     visibility: hidden;
 	-webkit-transition: all .5s ease;
   	transition: all .5s ease;
+}
+#project .proj-left .presentation-project{
+	-ms-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
 }
 #project .presentation-project.show{
 	-ms-transform: translateX(0);
@@ -1033,9 +1041,13 @@ body.noscroll{overflow: hidden;}
 #project .detail-project.scroll{
 	overflow-y: scroll;
 }
+#project .contain-sections{position: relative;}
 #project .detail-project .one-section{
 	position:relative;
-	height:100%;
+	width:100%;
+}
+#project .detail-project .one-section.proj-left{
+	left:24%;
 }
 #project .detail-project .one-section::before{
 	height: 100%;
@@ -1110,7 +1122,8 @@ body.noscroll{overflow: hidden;}
 	-webkit-border-bottom-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
-#project .last-section{text-align:center;}
+#project .last-section{position:relative;width:100%;text-align:center;}
+#project .last-section.proj-left{left:24%;}
 #project .last-section .button{
 	position:relative;
 	width:240px;
@@ -1167,6 +1180,62 @@ body.noscroll{overflow: hidden;}
 	font-family:"SourceSansPro-Light";
 	font-size:14px;font-size:1.4rem;
 	margin:0 0 50px 0;
+}
+/* timeline project */
+#project .timeline-container{
+	position:fixed;
+	width:35px;height:84%;
+	top:8%;left:40px;
+}
+#project .start, #project .end{
+	width:100%;height:2%;
+	font-family: "SourceSansPro-Regular";
+	font-size:11px;font-size:1.1rem;
+	color:#fff;
+	text-transform:uppercase;
+	text-align:center;
+	background:none;border:none;padding:0;
+	cursor:pointer;
+}
+#project .timeline{
+	height:96%;width:100%;
+}
+#project .timeline .button_m{width:100%;height:42.5px;}
+#project .timeline .button_m button{
+	background:url(../img/btn-timeline-border.png) no-repeat center center;border:none;padding:0;
+	width:30px;height:30px;
+	margin-left:3px;
+	cursor:pointer;
+	transform-origin: 50% 50%;
+	-ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+#project .timeline .button_m button div{
+	width:100%;height:100%;
+	background:transparent;
+	-webkit-transition: all .5s ease;
+  	transition: all .5s ease;
+}
+#project .timeline .button_m button:hover div{background:#fff;}
+#project .timeline .button_m button span{
+	display: block;
+	width:100%;height:100%;
+	line-height:30px;
+	font-family:"ProximaNova-Regular";
+	font-size:12px;font-size:1.2rem;
+	color:#fff;
+	transform-origin: 50% 50%;
+	-ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transition: all .5s ease;
+  	transition: all .5s ease;
+}
+#project .timeline .button_m button:hover span{color:#333;}
+#project .timeline .spacing{
+	width:100%;
+	background: url(../img/dots2.png) repeat-y top center;
 }
 
 /** RETINA **/

@@ -10,42 +10,61 @@
 <% } %>
 <div class="filter-back"></div>
 <div class="detail-project">
-	<section class="one-section">
-		<div class="title">
-			<div class='client'><img src="./img/projets/<%= background_item %>-client.png" alt="Projet <%= name %> réalisé pour <%= client %>"></div>
-            <h2><%= name %></h2>
-            <div class="seperate"><div></div></div>
-            <p><%= subject %></p>
-        </div>
-        <div class="scroll-discover">
-        	<p>scroll to discover</p>
-        	<div class="scroll-line">
-        		<div class="losange"></div>
-        	</div>
-        </div>
-	</section>
-	<% for(var mockup in mockups) { %>
-       <section class='one-section one-mockup'>
-       		<div>
-       			<div class='fake-browser'>
-					<span class='dots'>
-						<span></span>
-						<span></span>
-						<span></span>
-					</span>
-					<span class='input'><%= mockups[mockup].title %></span>
-				</div>
-       			<img src="./img/projets/mockups/<%= background_item %>-<%= mockups[mockup].image %>.jpg" alt="<%= name %> mockup : <%= mockups[mockup].title %>">
-       		</div>
-       </section>
-   <% } %>
-   <section class='last-section'>
-   		<div class="button"><a href="<%= url %>" target="_blank">see the project</a></div>
-   		<p>Thanks for watching !</p>
-   		<p>Use the arrows  to discover next project</p>
-   </section>
+	<div class="contain-sections">
+		<section class="one-section <% if(id%2 === 0){ %>proj-left<% } %>">
+			<div class="title">
+				<div class='client'><img src="./img/projets/<%= background_item %>-client.png" alt="Projet <%= name %> réalisé pour <%= client %>"></div>
+	            <h2><%= name %></h2>
+	            <div class="seperate"><div></div></div>
+	            <p><%= subject %></p>
+	        </div>
+	        <div class="scroll-discover">
+	        	<p>scroll to discover</p>
+	        	<div class="scroll-line">
+	        		<div class="losange"></div>
+	        	</div>
+	        </div>
+		</section>
+		<section class="timeline-container">
+			<button class="start" onclick="">start</button>
+			<div class="timeline">
+				<% _.each(mockups, function (val, i) { %>
+					<div class="spacing"></div>
+					<div class="button_m"><button class="mockup_<%= i %>"><div><span><%= i+1 %></span></div></button></div>
+					<div class="spacing"></div>
+				<% }); %>
+			</div>
+			<script>
+				$('.spacing').css('height', ($('.timeline').height()-($('.button_m').length*42.5))/($('.button_m').length*2)+'px');
+			</script>
+			<button class="end" onclick="$('.contain-sections').css('bottom',0);">end</button>
+		</section>
+		<% for(var mockup in mockups) { %>
+	       <section class='one-section one-mockup <% if(id%2 === 0){ %>proj-left<% }%>'>
+	       		<div>
+	       			<div class='fake-browser'>
+						<span class='dots'>
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+						<span class='input'><%= mockups[mockup].title %></span>
+					</div>
+	       			<img src="./img/projets/mockups/<%= background_item %>-<%= mockups[mockup].image %>.jpg" alt="<%= name %> mockup : <%= mockups[mockup].title %>">
+	       		</div>
+	       </section>
+	   <% } %>
+	   <section class='last-section <% if(id%2 === 0){ %>proj-left<% } %>'>
+	   		<div class="button"><a href="<%= url %>" target="_blank">see the project</a></div>
+	   		<p>Thanks for watching !</p>
+	   		<p>Use the arrows  to discover next project</p>
+	   </section>
+	   	<script>
+			$('.one-section').css('height', $(window).height()+'px');
+		</script>
+	</div>
 </div>
-<section class="presentation-project-container">
+<section class="presentation-project-container <% if(id%2 === 0){ %>proj-left<% } %>">
 	<section class="presentation-project">
 		<div>
 			<h2><%= name %></h2>
@@ -85,16 +104,16 @@
 	$(function(){
 		var id = <%= id %>;
 		var prev = id - 1;
-		// if(prev !== 0){
+		if(prev !== 0){
 			$('.nav .prev').append("<a href='#' class='prev_"+prev+"'><span>prev</span></>");
-		// }else{
-			// $('.nav .prev').addClass('displayNone');
-		// }
+		}else{
+			$('.nav .prev').addClass('displayNone');
+		}
 		var next = id + 1;
-		// if(next !== settings.app.projectList.length){
+		if(next !== settings.app.projectList.length){
 			$('.nav .next').append("<a href='#' class='prev_"+next+"'><span>next</span></>");
-		// }else{
-			// $('.nav .next').addClass('displayNone');
-		// }
+		}else{
+			$('.nav .next').addClass('displayNone');
+		}
 	});
 </script>
