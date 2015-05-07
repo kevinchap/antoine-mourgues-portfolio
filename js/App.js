@@ -116,6 +116,7 @@ var AppRouter = Backbone.Router.extend({
                     }else{
                         $('#project .contain-sections').css('width', $('#project .presentation-project-container').offset().left+'px');
                     }
+
                     $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover').addClass('show');
                     setTimeout(function(){
                         $('.detail-project').addClass('scroll');
@@ -337,6 +338,32 @@ function loadProject(id, background, top){
             }, 1000);
         }, 3500);
     }
+}
+
+function timelineScroll(elmt){
+    if($(elmt).hasClass('start')){
+        $('.detail-project').scrollTo(0, { duration:800 });
+        $('#project .back-blur').removeClass('blur');
+    }else if($(elmt).hasClass('end')){
+        $('.detail-project').scrollTo($('.last-section').position().top, { duration:800 });
+        $('#project .back-blur').addClass('blur');
+    }else{
+        $('.detail-project').scrollTo($('.mockup_'+$(elmt).attr('data-id')).position().top, { duration:800 });
+        $('#project .back-blur').addClass('blur');
+    }
+}
+
+function timelineProgress(elmt){
+    var height = ($('#project .timeline').height()*elmt.scrollTop)/($('.contain-sections').height()-($('.one-section').height()));
+    $('#project .timeline .line div').css('height', height+'px');
+    // console.log($('.contain-sections').height());
+    // console.log(elmt.scrollTop+$('.one-section').height());
+    $('.one-mockup').bind('inview',function(event, isInView, visiblePartX, visiblePartY){
+        if(isInView && visiblePartY === 'bottom'){
+            $('button#'+$(this).attr('id')).addClass('active');
+            console.log(visiblePartY);
+        }
+    });
 }
 
 

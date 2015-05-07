@@ -9,7 +9,7 @@
 	<div class="back-blur" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center <%= back_top_pos %>px;-webkit-background-size: cover;background-size: cover;"></div>
 <% } %>
 <div class="filter-back"></div>
-<div class="detail-project">
+<div class="detail-project" onscroll="timelineProgress(this)">
 	<div class="contain-sections">
 		<section class="one-section <% if(id%2 === 0){ %>proj-left<% } %>">
 			<div class="title">
@@ -25,22 +25,8 @@
 	        	</div>
 	        </div>
 		</section>
-		<section class="timeline-container">
-			<button class="start" onclick="">start</button>
-			<div class="timeline">
-				<% _.each(mockups, function (val, i) { %>
-					<div class="spacing"></div>
-					<div class="button_m"><button class="mockup_<%= i %>"><div><span><%= i+1 %></span></div></button></div>
-					<div class="spacing"></div>
-				<% }); %>
-			</div>
-			<script>
-				$('.spacing').css('height', ($('.timeline').height()-($('.button_m').length*42.5))/($('.button_m').length*2)+'px');
-			</script>
-			<button class="end" onclick="$('.contain-sections').css('bottom',0);">end</button>
-		</section>
-		<% for(var mockup in mockups) { %>
-	       <section class='one-section one-mockup <% if(id%2 === 0){ %>proj-left<% }%>'>
+		<% _.each(mockups, function (val, i) { %>
+	       <section id="mockup_<%= i %>" class='one-section one-mockup mockup_<%= i %> <% if(id%2 === 0){ %>proj-left<% }%>'>
 	       		<div>
 	       			<div class='fake-browser'>
 						<span class='dots'>
@@ -48,17 +34,32 @@
 							<span></span>
 							<span></span>
 						</span>
-						<span class='input'><%= mockups[mockup].title %></span>
+						<span class='input'><%= mockups[i].title %></span>
 					</div>
-	       			<img src="./img/projets/mockups/<%= background_item %>-<%= mockups[mockup].image %>.jpg" alt="<%= name %> mockup : <%= mockups[mockup].title %>">
+	       			<img src="./img/projets/mockups/<%= background_item %>-<%= mockups[i].image %>.jpg" alt="<%= name %> mockup : <%= mockups[i].title %>">
 	       		</div>
 	       </section>
-	   <% } %>
-	   <section class='last-section <% if(id%2 === 0){ %>proj-left<% } %>'>
+	   	<% }); %>
+	   	<section class='last-section <% if(id%2 === 0){ %>proj-left<% } %>'>
 	   		<div class="button"><a href="<%= url %>" target="_blank">see the project</a></div>
 	   		<p>Thanks for watching !</p>
 	   		<p>Use the arrows  to discover next project</p>
-	   </section>
+	   	</section>
+	   	<section class="timeline-container">
+			<button class="b-nav start" onclick="timelineScroll(this);">start</button>
+			<div class="timeline">
+				<div class="line"><div></div></div>
+				<% _.each(mockups, function (val, i) { %>
+					<div class="spacing"></div>
+					<div class="button_m"><button id="mockup_<%= i %>" class="b-nav" data-id="<%= i %>" onclick="timelineScroll(this);"><div><span><%= i+1 %></span></div></button></div>
+					<div class="spacing"></div>
+				<% }); %>
+			</div>
+			<script>
+				$('.spacing').css('height', ($('.timeline').height()-($('.button_m').length*42.5))/($('.button_m').length*2)+'px');
+			</script>
+			<button class="b-nav end" onclick="timelineScroll(this);">end</button>
+		</section>
 	   	<script>
 			$('.one-section').css('height', $(window).height()+'px');
 		</script>
