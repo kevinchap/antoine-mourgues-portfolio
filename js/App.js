@@ -358,12 +358,16 @@ function timelineProgress(elmt){
     $('#project .timeline .line div').css('height', height+'px');
     // console.log($('.contain-sections').height());
     // console.log(elmt.scrollTop+$('.one-section').height());
-    $('.one-mockup').bind('inview',function(event, isInView, visiblePartX, visiblePartY){
-        if(isInView && visiblePartY === 'bottom'){
-            $('button#'+$(this).attr('id')).addClass('active');
-            console.log(visiblePartY);
+    console.log('height : '+height);
+    var btns = $('.button_m');
+    for(var i=0; i<btns.length; i++){
+        console.log('top button : '+$(btns[i]).position().top);
+        if(height>=$(btns[i]).position().top){
+            $(btns[i]).addClass('active');
+        }else{
+            $(btns[i]).removeClass('active');
         }
-    });
+    }
 }
 
 
