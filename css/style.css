@@ -986,27 +986,102 @@ body.noscroll{overflow: hidden;}
 	position:absolute;
 	width:76%;bottom:25px;
 	text-align:center;
+}
+#project .presentation-project .nav li{
+	display:inline-block;
+	vertical-align:top;
+	margin:0 10px;
+	position:relative;
 
 	opacity:0;
 	visibility:hidden;
 	-ms-transform: translateY(20px);
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
-    -webkit-transition: all .5s 2s ease;
-  	transition: all .5s 2s ease;
 }
-#project .presentation-project .nav.show{
+#project .presentation-project .nav li:first-child{
+	-webkit-transition: all .5s 2s ease;
+	transition: all .5s 2s ease;
+}
+#project .presentation-project .nav li:nth-child(2){
+	-webkit-transition: all .5s 2.3s ease;
+	transition: all .5s 2.3s ease;
+}
+#project .presentation-project .nav li:last-child{
+	-webkit-transition: all .5s 2.6s ease;
+	transition: all .5s 2.6s ease;
+}
+#project .presentation-project .nav li.show{
 	opacity:1;
 	visibility:visible;
 	-ms-transform: translateY(0);
     -webkit-transform: translateY(0);
     transform: translateY(0);
 }
-#project .presentation-project .nav li{
-	display:inline-block;
-	vertical-align:top;
-	margin:0 10px;
+#project .presentation-project .nav li button{
+	position:absolute;
+	top:0;left:50%;margin-left:-15px;
+	width:30px;height:30px;
+	border:1px solid #76ffd8;
+	moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+	border-radius: 100%;
+	cursor:pointer;
+
+	background-color: transparent;
+	-webkit-transition: all .5s ease;
+  	transition: all .5s ease;
 }
+#project .presentation-project .nav li button:hover{background:#76ffd8;}
+
+
+#project .presentation-project .nav li button:before, #project .presentation-project .nav li button:after{
+	content: '';
+	position: absolute;
+	height: 1px;
+	width: 5px;
+
+	top: 15px;
+	right: 12px;
+	transform: rotate(225deg);
+	-webkit-transform: rotate(225deg);
+
+	background-color: #76ffd8;
+	-webkit-transition: all .5s ease;
+  	transition: all .5s ease;
+}
+#project .presentation-project .nav li button:hover:before, #project .presentation-project .nav li button:hover:after{
+	background:#333333;
+}
+#project .presentation-project .nav .prev button:after{
+	top: 12px;
+	transform: rotate(-225deg);
+	-webkit-transform: rotate(-225deg);
+}
+
+#project .presentation-project .nav .close button:before{
+	top: 13px;
+	left: 10px;
+	width: 9px;
+	transform: rotate(-225deg);
+	-webkit-transform: rotate(-225deg);
+}
+#project .presentation-project .nav .close button:after{
+	top: 13px;
+	left: 10px;
+	width: 9px;
+}
+
+#project .presentation-project .nav .next button:before{
+	left: 12px;
+	transform: rotate(-225deg);
+	-webkit-transform: rotate(-225deg);
+}
+#project .presentation-project .nav .next button:after{
+	top: 12px;
+	left: 12px;
+}
+
 #project .presentation-project .nav a{
 	background:none;border:none;
 	width:auto;height:50px;
@@ -1031,9 +1106,6 @@ body.noscroll{overflow: hidden;}
     -webkit-transform: translateY(0);
     transform: translateY(0);
 }
-#project .presentation-project .nav .prev{background:url(../img/right-arrow.png) no-repeat top center;}
-#project .presentation-project .nav .close{background:url(../img/cross.png) no-repeat top center;}
-#project .presentation-project .nav .next{background:url(../img/left-arrow.png) no-repeat top center;}
 #project .detail-project{
 	position: relative;
 	top:0;left:0;height:100%;
@@ -1214,6 +1286,19 @@ body.noscroll{overflow: hidden;}
 	display:inline-block;
 	background:#fff;
 }
+#project .timeline .line div::after{
+	content:"";
+	display:block;
+	position:absolute;
+	bottom:-3px;left:-1px;
+	width:3px;height:3px;
+	box-sizing:border-box;
+	border:1px solid white;
+	background: #fff;
+	-ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 #project .timeline .button_m{width:100%;height:42.5px;}
 #project .timeline .button_m button{
 	background:url(../img/btn-timeline-border.png) no-repeat center center;border:none;padding:0;
@@ -1228,8 +1313,8 @@ body.noscroll{overflow: hidden;}
 #project .timeline .button_m button div{
 	width:100%;height:100%;
 	background:transparent;
-	-webkit-transition: all .5s ease;
-  	transition: all .5s ease;
+	-webkit-transition: all .3s ease;
+  	transition: all .3s ease;
 }
 #project .timeline .button_m button:hover div, #project .timeline .button_m.active button div{background:#fff;}
 #project .timeline .button_m button span{
@@ -1243,8 +1328,8 @@ body.noscroll{overflow: hidden;}
 	-ms-transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    -webkit-transition: all .5s ease;
-  	transition: all .5s ease;
+    -webkit-transition: all .3s ease;
+  	transition: all .3s ease;
 }
 #project .timeline .button_m button:hover span, #project .timeline .button_m.active button span{color:#333;}
 #project .timeline .spacing{

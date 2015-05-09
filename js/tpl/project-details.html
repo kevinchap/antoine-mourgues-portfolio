@@ -26,7 +26,7 @@
 	        </div>
 		</section>
 		<% _.each(mockups, function (val, i) { %>
-	       <section id="mockup_<%= i %>" class='one-section one-mockup mockup_<%= i %> <% if(id%2 === 0){ %>proj-left<% }%>'>
+	       <section class='one-section one-mockup mockup_<%= i %> <% if(id%2 === 0){ %>proj-left<% }%>'>
 	       		<div>
 	       			<div class='fake-browser'>
 						<span class='dots'>
@@ -51,7 +51,7 @@
 				<div class="line"><div></div></div>
 				<% _.each(mockups, function (val, i) { %>
 					<div class="spacing"></div>
-					<div class="button_m"><button id="mockup_<%= i %>" class="b-nav" data-id="<%= i %>" onclick="timelineScroll(this);"><div><span><%= i+1 %></span></div></button></div>
+					<div class="button_m"><button class="b-nav" data-id="<%= i %>" onclick="timelineScroll(this);"><div><span><%= i+1 %></span></div></button></div>
 					<div class="spacing"></div>
 				<% }); %>
 			</div>
@@ -96,7 +96,7 @@
 		</div>
 		<ul class="nav">
 			<li class='prev'></li>
-			<li class='close'><a href="#"><span>close</span></a></li>
+			<li class='close'><button></button><a href=''><span>close</span></a></li>
 			<li class='next'></li>
 		</ul>
 	</section>
@@ -105,16 +105,16 @@
 	$(function(){
 		var id = <%= id %>;
 		var prev = id - 1;
-		if(prev !== 0){
-			$('.nav .prev').append("<a href='#' class='prev_"+prev+"'><span>prev</span></>");
-		}else{
-			$('.nav .prev').addClass('displayNone');
-		}
+		// if(prev !== 0){
+			$('.nav .prev').append("<button class='prev_"+prev+"'></button><a href=''><span>prev</span></a>");
+		// }else{
+		// 	$('.nav .prev').addClass('displayNone');
+		// }
 		var next = id + 1;
-		if(next !== settings.app.projectList.length){
-			$('.nav .next').append("<a href='#' class='prev_"+next+"'><span>next</span></>");
-		}else{
-			$('.nav .next').addClass('displayNone');
-		}
+		// if(next !== settings.app.projectList.length){
+			$('.nav .next').append("<button class='next_"+next+"'></button><a href=''><span>next</span></a>");
+		// }else{
+		// 	$('.nav .next').addClass('displayNone');
+		// }
 	});
 </script>

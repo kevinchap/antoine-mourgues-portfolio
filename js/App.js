@@ -108,7 +108,7 @@ var AppRouter = Backbone.Router.extend({
             setTimeout(function(){
                 $('#project .presentation-project').addClass('show');
                 setTimeout(function(){
-                    $('.menu-button, #project .presentation-project div, #project .presentation-project .nav').addClass('show');
+                    $('.menu-button, #project .presentation-project div, #project .presentation-project .nav li').addClass('show');
                 }, 500);
                 setTimeout(function(){
                     if(id%2 === 0){
@@ -139,7 +139,7 @@ var AppRouter = Backbone.Router.extend({
             setTimeout(function(){
                 $('#project .presentation-project').addClass('show');
                 setTimeout(function(){
-                    $('.menu-button, #project .presentation-project div, #project .presentation-project .nav').addClass('show');
+                    $('.menu-button, #project .presentation-project div, #project .presentation-project .nav li').addClass('show');
                 }, 500);
                 setTimeout(function(){
                     if(id%2 === 0){
