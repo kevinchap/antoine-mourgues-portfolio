@@ -117,7 +117,7 @@ var AppRouter = Backbone.Router.extend({
                         $('#project .contain-sections').css('width', $('#project .presentation-project-container').offset().left+'px');
                     }
 
-                    $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover').addClass('show');
+                    $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover, #project .timeline-container').addClass('show');
                     setTimeout(function(){
                         $('.detail-project').addClass('scroll');
                         var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
@@ -147,7 +147,7 @@ var AppRouter = Backbone.Router.extend({
                     }else{
                         $('#project .contain-sections').css('width', $('#project .presentation-project-container').offset().left+'px');
                     }
-                    $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover').addClass('show');
+                    $('#project .title h2, #project .title .seperate, #project .title p, #project .title .client, #project .scroll-discover, #project .timeline-container').addClass('show');
                     setTimeout(function(){
                         $('.detail-project').addClass('scroll');
                         var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x

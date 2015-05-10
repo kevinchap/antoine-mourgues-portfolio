@@ -10,8 +10,8 @@
 <% } %>
 <div class="filter-back"></div>
 <div class="detail-project" onscroll="timelineProgress(this)">
-	<div class="contain-sections">
-		<section class="one-section <% if(id%2 === 0){ %>proj-left<% } %>">
+	<div class="contain-sections <% if(id%2 === 0){ %>proj-left<% } %>">
+		<section class="one-section">
 			<div class="title">
 				<div class='client'><img src="./img/projets/<%= background_item %>-client.png" alt="Projet <%= name %> réalisé pour <%= client %>"></div>
 	            <h2><%= name %></h2>
@@ -26,7 +26,7 @@
 	        </div>
 		</section>
 		<% _.each(mockups, function (val, i) { %>
-	       <section class='one-section one-mockup mockup_<%= i %> <% if(id%2 === 0){ %>proj-left<% }%>'>
+	       <section class='one-section one-mockup mockup_<%= i %>'>
 	       		<div>
 	       			<div class='fake-browser'>
 						<span class='dots'>
@@ -40,7 +40,7 @@
 	       		</div>
 	       </section>
 	   	<% }); %>
-	   	<section class='last-section <% if(id%2 === 0){ %>proj-left<% } %>'>
+	   	<section class='last-section'>
 	   		<div class="button"><a href="<%= url %>" target="_blank">see the project</a></div>
 	   		<p>Thanks for watching !</p>
 	   		<p>Use the arrows  to discover next project</p>

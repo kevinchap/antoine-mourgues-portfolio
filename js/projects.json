@@ -20,19 +20,15 @@
          },
          {
             "image":2,
-            "title":"Timeline"
+            "title":"All Starz Map"
          },
          {
             "image":3,
-            "title":"Match légendaire"
+            "title":"All Starz Lyrics"
          },
          {
             "image":4,
-            "title":"Temps additionnel"
-         },
-         {
-            "image":5,
-            "title":"Match exploit"
+            "title":"Fiche Rappeur"
          }
       ]
    },
@@ -40,19 +36,19 @@
       "id":2,
       "name":"PANAM ALL STARZ",
       "job":"Project manager - Art director",
-      "client": "",
-      "date": "",
-      "subject":"",
-      "agence":"",
-      "description": "",
-      "url": "",
+      "client": "HETIC",
+      "date": "March 2014",
+      "subject":"Datavisualisation website",
+      "agence":"Freelance",
+      "description": "Panam All Starz est un projet étudiant réalisé par des troisièmes années à HETIC. Ce dernier a pour but de comparer différents rappeurs de l’Ile de France sous la forme d’une datavisualisation. Le site n’a pas pour but de déterminer quel est le meilleur rappeur mais de mettre à disposition des données pour que chacun se fasse sa propre idée.",
+      "url": "http://panamallstarz.fr/",
       "app":false,
       "background_item":"panamallstarz",
       "back_top_pos":-173,
       "mockups":[
          {
             "image":1,
-            "title":"Timeline"
+            "title":"Home"
          },
          {
             "image":2,
@@ -72,63 +68,59 @@
       "id":3,
       "name":"TEDx CHAMPS-ÉLYSÉES EDUCATION",
       "job":"UI/UX Designer",
-      "client": "",
-      "date": "",
-      "subject":"",
-      "agence": "",
-      "description": "",
-      "url": "",
+      "client": "Complete",
+      "date": "Complete",
+      "subject":"Complete",
+      "agence": "Complete",
+      "description": "Complete",
+      "url": "#",
       "app":false,
       "background_item":"ted",
       "back_top_pos":-324,
       "mockups":[
          {
             "image":1,
-            "title":"Timeline"
+            "title":"Home"
          },
          {
             "image":2,
-            "title":"Match légendaire"
+            "title":"Complete"
          },
          {
             "image":3,
-            "title":"Temps additionnel"
+            "title":"Complete"
          },
          {
             "image":4,
-            "title":"Match exploit"
+            "title":"Complete"
          }
       ]
    },
    {  
       "id":4,
-      "name":"LUBOO STUDIO",
+      "name":"KEVIN PORTFOLIO",
       "job":"Art director",
-      "client": "",
-      "date": "",
-      "subject":"",
-      "agence": "",
-      "description": "",
-      "url": "",
+      "client": "Kévin Chapron",
+      "date": "Coming soon",
+      "subject":"Portfolio de l'enfoiré",
+      "agence": "Agence Cochonne",
+      "description": "Biiiim",
+      "url": "http://www/kevinchapron.fr",
       "app":false,
-      "background_item":"luboostudio",
+      "background_item":"kevin",
       "back_top_pos":-300,
       "mockups":[
          {
             "image":1,
-            "title":"Timeline"
+            "title":"Home"
          },
          {
             "image":2,
-            "title":"Match légendaire"
+            "title":"Portfolio"
          },
          {
             "image":3,
-            "title":"Temps additionnel"
-         },
-         {
-            "image":4,
-            "title":"Match exploit"
+            "title":"Project"
          }
       ]
    }
