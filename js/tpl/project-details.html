@@ -1,120 +1,124 @@
-<% if(id !== 1){ %>
-	<div class="back-fixed" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center center;-webkit-background-size: cover;background-size: cover;"></div>
-<% }else{ %>
-	<div class="back-fixed" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center <%= back_top_pos %>px;-webkit-background-size: cover;background-size: cover;"></div>
-<% } %>
-<% if(id !== 1){ %>
-	<div class="back-blur" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center center;-webkit-background-size: cover;background-size: cover;"></div>
-<% }else{ %>
-	<div class="back-blur" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center <%= back_top_pos %>px;-webkit-background-size: cover;background-size: cover;"></div>
-<% } %>
-<div class="filter-back"></div>
-<div class="detail-project" onscroll="timelineProgress(this)">
-	<div class="contain-sections <% if(id%2 === 0){ %>proj-left<% } %>">
-		<section class="one-section">
-			<div class="title">
-				<div class='client'><img src="./img/projets/<%= background_item %>-client.png" alt="Projet <%= name %> réalisé pour <%= client %>"></div>
-	            <h2><%= name %></h2>
-	            <div class="seperate"><div></div></div>
-	            <p><%= subject %></p>
-	        </div>
-	        <div class="scroll-discover">
-	        	<p>scroll to discover</p>
-	        	<div class="scroll-line">
-	        		<div class="losange"></div>
-	        	</div>
-	        </div>
-		</section>
-		<% _.each(mockups, function (val, i) { %>
-	       <section class='one-section one-mockup mockup_<%= i %>'>
-	       		<div>
-	       			<div class='fake-browser'>
-						<span class='dots'>
-							<span></span>
-							<span></span>
-							<span></span>
-						</span>
-						<span class='input'><%= mockups[i].title %></span>
-					</div>
-	       			<img src="./img/projets/mockups/<%= background_item %>-<%= mockups[i].image %>.jpg" alt="<%= name %> mockup : <%= mockups[i].title %>">
-	       		</div>
-	       </section>
-	   	<% }); %>
-	   	<section class='last-section'>
-	   		<div class="button"><a href="<%= url %>" target="_blank">see the project</a></div>
-	   		<p>Thanks for watching !</p>
-	   		<p>Use the arrows  to discover next project</p>
-	   	</section>
-	   	<section class="timeline-container">
-			<button class="b-nav start" onclick="timelineScroll(this);">start</button>
-			<div class="timeline">
-				<div class="line"><div></div></div>
-				<% _.each(mockups, function (val, i) { %>
-					<div class="spacing"></div>
-					<div class="button_m"><button class="b-nav" data-id="<%= i %>" onclick="timelineScroll(this);"><div><span><%= i+1 %></span></div></button></div>
-					<div class="spacing"></div>
-				<% }); %>
-			</div>
-			<script>
-				$('.spacing').css('height', ($('.timeline').height()-($('.button_m').length*42.5))/($('.button_m').length*2)+'px');
+<section class='content-project'>
+	<% if(id !== 1){ %>
+		<div class="back-fixed" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center center;-webkit-background-size: cover;background-size: cover;"></div>
+	<% }else{ %>
+		<div class="back-fixed" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center <%= back_top_pos %>px;-webkit-background-size: cover;background-size: cover;"></div>
+	<% } %>
+	<% if(id !== 1){ %>
+		<div class="back-blur" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center center;-webkit-background-size: cover;background-size: cover;"></div>
+	<% }else{ %>
+		<div class="back-blur" style="background:url('./img/projets/<%= background_item %>.jpg') no-repeat center <%= back_top_pos %>px;-webkit-background-size: cover;background-size: cover;"></div>
+	<% } %>
+	<div class="filter-back"></div>
+	<div class="detail-project" onscroll="timelineProgress(this)">
+		<div class="contain-sections <% if(id%2 === 0){ %>proj-left<% } %>">
+			<section class="one-section">
+				<div class="title">
+					<div class='client'><img src="./img/projets/<%= background_item %>-client.png" alt="Projet <%= name %> réalisé pour <%= client %>"></div>
+		            <h2><%= name %></h2>
+		            <div class="seperate"><div></div></div>
+		            <p><%= subject %></p>
+		        </div>
+		        <div class="scroll-discover">
+		        	<p>scroll to discover</p>
+		        	<div class="scroll-line">
+		        		<div class="losange"></div>
+		        	</div>
+		        </div>
+			</section>
+			<% _.each(mockups, function (val, i) { %>
+		       <section class='one-section one-mockup mockup_<%= i %>'>
+		       		<div>
+		       			<div class='fake-browser'>
+							<span class='dots'>
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+							<span class='input'><%= mockups[i].title %></span>
+						</div>
+		       			<img src="./img/projets/mockups/<%= background_item %>-<%= mockups[i].image %>.jpg" alt="<%= name %> mockup : <%= mockups[i].title %>">
+		       		</div>
+		       </section>
+		   	<% }); %>
+		   	<section class='last-section'>
+		   		<div class="button"><a href="<%= url %>" target="_blank">see the project</a></div>
+		   		<p>Thanks for watching !</p>
+		   		<p>Use the arrows  to discover next project</p>
+		   	</section>
+		   	<section class="timeline-container">
+				<button class="b-nav start" onclick="timelineScroll(this);">start</button>
+				<div class="timeline">
+					<div class="line"><div></div></div>
+					<% _.each(mockups, function (val, i) { %>
+						<div class="spacing"></div>
+						<div class="button_m"><button class="b-nav" data-id="<%= i %>" onclick="timelineScroll(this);"><div><span><%= i+1 %></span></div></button></div>
+						<div class="spacing"></div>
+					<% }); %>
+				</div>
+				<script>
+					$('.spacing').css('height', ($('.timeline').height()-($('.button_m').length*42.5))/($('.button_m').length*2)+'px');
+				</script>
+				<button class="b-nav end" onclick="timelineScroll(this);">end</button>
+			</section>
+		   	<script>
+				$('.one-section').css('height', $(window).height()+'px');
 			</script>
-			<button class="b-nav end" onclick="timelineScroll(this);">end</button>
-		</section>
-	   	<script>
-			$('.one-section').css('height', $(window).height()+'px');
-		</script>
+		</div>
 	</div>
-</div>
-<section class="presentation-project-container <% if(id%2 === 0){ %>proj-left<% } %>">
-	<section class="presentation-project">
-		<div>
-			<h2><%= name %></h2>
-			<% if(typeof wins !== "undefined"){ %>
-				<ul class='wins'>
-					<% for(var win in wins) { %>
-			           <li><img src="./img/<%= wins[win] %>-mini.png" alt="R&eacute;compense <%= wins[win] %> pour <%= name %>."/></li>
-			       <% } %>
+	<section class="presentation-project-container <% if(id%2 === 0){ %>proj-left<% } %>">
+		<section class="presentation-project">
+			<div>
+				<h2><%= name %></h2>
+				<% if(typeof wins !== "undefined"){ %>
+					<ul class='wins'>
+						<% for(var win in wins) { %>
+				           <li><img src="./img/<%= wins[win] %>-mini.png" alt="R&eacute;compense <%= wins[win] %> pour <%= name %>."/></li>
+				       <% } %>
+					</ul>
+				<% } %>
+			</div>
+			<div>
+				<ul class="work-details-title">
+					<li>Role</li>
+					<li>Client</li>
+					<li>Agency</li>
+					<li>Date</li>
 				</ul>
-			<% } %>
-		</div>
-		<div>
-			<ul class="work-details-title">
-				<li>Role</li>
-				<li>Client</li>
-				<li>Agency</li>
-				<li>Date</li>
+				<ul class="work-details">
+					<li><%= job %></li>
+					<li><%= client %></li>
+					<li><%= agence %></li>
+					<li><%= date %></li>
+				</ul>
+			</div>
+			<div>
+				<p><%= description %></p>
+			</div>
+			<ul class="nav">
+				<li class='prev'></li>
+				<li class='close'><button class='close'></button><a href=''><span>close</span></a></li>
+				<li class='next'></li>
 			</ul>
-			<ul class="work-details">
-				<li><%= job %></li>
-				<li><%= client %></li>
-				<li><%= agence %></li>
-				<li><%= date %></li>
-			</ul>
-		</div>
-		<div>
-			<p><%= description %></p>
-		</div>
-		<ul class="nav">
-			<li class='prev'></li>
-			<li class='close'><button></button><a href=''><span>close</span></a></li>
-			<li class='next'></li>
-		</ul>
+		</section>
 	</section>
+	<script>
+		$(function(){
+			var id = <%= id %>;
+			var prev = id - 1;
+			if(prev > 0){
+				$('.nav .prev').append("<button class='other' data-other='"+prev+"'></button><a href=''><span>prev</span></a>");
+			}else{
+				$('.nav .prev').addClass('displayNone');
+			}
+			var next = id + 1;
+			if(next <= settings.app.projectList.length){
+				$('.nav .next').append("<button class='other' data-other='"+next+"''></button><a href=''><span>next</span></a>");
+			}else{
+				$('.nav .next').addClass('displayNone');
+			}
+		});
+	</script>
 </section>
-<script>
-	$(function(){
-		var id = <%= id %>;
-		var prev = id - 1;
-		// if(prev !== 0){
-			$('.nav .prev').append("<button class='prev_"+prev+"'></button><a href=''><span>prev</span></a>");
-		// }else{
-		// 	$('.nav .prev').addClass('displayNone');
-		// }
-		var next = id + 1;
-		// if(next !== settings.app.projectList.length){
-			$('.nav .next').append("<button class='next_"+next+"'></button><a href=''><span>next</span></a>");
-		// }else{
-		// 	$('.nav .next').addClass('displayNone');
-		// }
-	});
-</script>
+<div id="change-load" class="<% if(id%2 === 0){ %>proj-left<% } %>"></div>
+<div id="close-load" class="<% if(id%2 === 0){ %>proj-left<% } %>"></div>

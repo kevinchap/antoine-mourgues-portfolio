@@ -760,10 +760,16 @@ body.noscroll{overflow: hidden;}
 	opacity:1;visibility:visible;
 	z-index:5;
 }
-#project > section{
+#project.transitionOut{
+	-webkit-transition: all .5s ease;
+  	transition: all .5s ease;
+}
+#project > section, #project .content-project{
 	position:relative;
 	top:0;left:0;
 	width:100%;height:100%;
+	opacity:1;
+	visibility:visible;
 }
 #project .back-fixed, #project .back-blur, #project .filter-back{
 	position:fixed;
@@ -1109,6 +1115,7 @@ body.noscroll{overflow: hidden;}
 #project .detail-project{
 	position: relative;
 	top:0;left:0;height:100%;
+	 width: 102%;
 }
 #project .detail-project.scroll{
 	overflow-y: auto;
@@ -1117,6 +1124,9 @@ body.noscroll{overflow: hidden;}
 #project .detail-project .one-section{
 	position:relative;
 	width:100%;
+}
+#project .detail-project .one-section.show{
+
 }
 #project .detail-project .contain-sections.proj-left{
 	left:24%;
@@ -1355,6 +1365,29 @@ body.noscroll{overflow: hidden;}
 #project .timeline .spacing{
 	width:100%;
 	background: url(../img/dots2.png) repeat-y top center;
+}
+/* close and change project section */
+#project #change-load, #project #close-load{
+	position:fixed;
+	top:0;right:0;
+	width:24%;height:100%;
+	background:#333333;
+	z-index:5;
+
+	opacity:0;
+	visibility:hidden;
+	-webkit-transition: all .5s ease;
+  	transition: all .5s ease;
+}
+#project #change-load.proj-left, #project #close-load.proj-left{
+	left:0;
+}
+#project #change-load.on, #project #close-load.on{
+	opacity:1;
+	visibility:visible;
+}
+#project #change-load.load, #project #close-load.load{
+	width:100%;
 }
 
 /** RETINA **/

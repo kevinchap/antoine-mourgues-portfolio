@@ -4,6 +4,7 @@ var settings = {
     loaderTime:0,
     home:false,
     projects:false,
+    detailProject:false,
     app:null,
     clickOn:true
 }
@@ -60,33 +61,38 @@ var AppRouter = Backbone.Router.extend({
     },
 
     projects:function () {
-        if(settings.home!==true){
-            $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
-            $('.home, .portfolio, .home .content, .portfolio .content').addClass('slidedown');
-            setTimeout(function(){
-                $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+        if(settings.detailProject!==true){
+            if(settings.home!==true){
+                $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+                $('.home, .portfolio, .home .content, .portfolio .content').addClass('slidedown');
                 setTimeout(function(){
-                    $('.menu-button').addClass('show');
-                }, 500);
+                    $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                    setTimeout(function(){
+                        $('.menu-button').addClass('show');
+                    }, 500);
+                    setTimeout(function(){
+                        showItemsProjects(true);
+                    },2500);
+                }, 4500);
+            }else{
                 setTimeout(function(){
-                    showItemsProjects();
-                },2500);
-            }, 4500);
+                    $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                    setTimeout(function(){
+                        $('.menu-button').addClass('show');
+                    }, 500);
+                    setTimeout(function(){
+                        showItemsProjects(true);
+                    },2500);
+                },2000);
+            }
         }else{
-            setTimeout(function(){
-                $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
-                setTimeout(function(){
-                    $('.menu-button').addClass('show');
-                }, 500);
-                setTimeout(function(){
-                    showItemsProjects();
-                },2500);
-            },2000);
+            // showItemsProjects(false);
         }
 
         detectMouseWheel('projects', false);
 
         if(settings.projects !== true){
+            console.log("c'est ça");
             this.projectList.fetch({success: function() {
                 $('#list-projects').html(new ProjectListView({model: settings.app.projectList}).render().el);
             }});
@@ -97,8 +103,19 @@ var AppRouter = Backbone.Router.extend({
  
     projectDetails:function (id) {
         $('#project').addClass('visible');
+        setTimeout(function(){
+            $('#project').addClass('transitionOut');
+        },100);
 
-        if(settings.projects!==true){
+        if(settings.projects!==true && settings.detailProject!==true){
+            $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+            $('.home, .portfolio, .home .content, .portfolio .content').addClass('slidedown');
+            this.projectList.fetch({success: function() {
+                $('#list-projects').html(new ProjectListView({model: settings.app.projectList}).render().el);
+            }});
+            $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+            showItemsProjects(false);
+
             this.projectList.fetch({success: function() {
                 settings.app.project = settings.app.projectList.get(id);
                 settings.app.projectView = new ProjectView({model:settings.app.project});
@@ -127,6 +144,10 @@ var AppRouter = Backbone.Router.extend({
                             }else{
                                 $('#project .back-blur').removeClass('blur');
                             }
+                        });
+                        $('.nav li button').click(function(){
+                            var theClass = $(this).attr('class');
+                            changeProject(theClass, mousewheelevt);
                         });
                     }, 3000);
                 }, 3000);
@@ -158,10 +179,16 @@ var AppRouter = Backbone.Router.extend({
                                 $('#project .back-blur').removeClass('blur');
                             }
                         });
+                        $('.nav li button').click(function(){
+                            var theClass = $(this).attr('class');
+                            changeProject(theClass, mousewheelevt);
+                        });
                     }, 3000);
                 }, 3000);
             }, 500);
         }
+
+        settings.detailProject = true;
     }
 });
 
@@ -241,18 +268,25 @@ function slide(down){
     }
 }
 
-function showItemsProjects(){
+function showItemsProjects(time){
     var lis = $('.portfolio #list-projects > ul > li');
     $(lis).css('width', $('.presentation').offset().left+'px')
     var nbAlreadyInView = parseInt($(window).height()/300);
     if(($(window).height()/300 - Math.floor($(window).height()/300)) > 0.5){
         nbAlreadyInView++;
     }
-    var i;
-    for(i=0;i<nbAlreadyInView;i++){
-        setTimeout(function(lis,i){
-            $(lis[i]).addClass('show');
-        },i*1200,lis,i);
+    if(time===true){
+        var i;
+        for(i=0;i<nbAlreadyInView;i++){
+            setTimeout(function(lis,i){
+                $(lis[i]).addClass('show');
+            },i*1200,lis,i);
+        }
+    }else{
+        setTimeout(function(){
+            $('.portfolio #list-projects > ul > li').css('width', $('.presentation').offset().left+'px')
+            $('.portfolio #list-projects > ul > li').addClass('show');
+        },100);
     }
     for(i=nbAlreadyInView; i<lis.length; i++){
         $(lis[i]).bind('inview',function(event, isInView, visiblePartX, visiblePartY){
@@ -368,6 +402,36 @@ function timelineProgress(elmt){
             $(btns[i]).removeClass('active');
         }
     }
+}
+
+function changeProject(theClass, mousewheelevt){
+    if(theClass === 'close'){
+        // $('#project').removeClass('visible');
+        // $('#project').html('');
+        // $(window).unbind(mousewheelevt);
+        // location.replace("#projects");
+        $('.menu-button').removeClass('show');
+        $('#project #close-load').addClass('on');
+        setTimeout(function(){
+            $('#project #close-load').addClass('load');
+            setTimeout(function(){
+                $('#project .content-project').addClass('invisible');
+                setTimeout(function(){
+                    $('#project').removeClass('visible');
+                    setTimeout(function(){
+                        $('#project').removeClass('transitionOut');
+                        $('#project').html('');
+                        $('.menu-button').addClass('show');
+                        $(window).unbind(mousewheelevt);
+                        location.replace("#projects");
+                    }, 500);
+                }, 500);
+            }, 500);
+        }, 800);
+    }else{
+
+    }
+    // console.log($(elmt).attr('data-other'));
 }
 
 
