@@ -5,6 +5,7 @@ var settings = {
     home:false,
     projects:false,
     detailProject:false,
+    contact:false,
     app:null,
     clickOn:true
 }
@@ -34,7 +35,8 @@ var AppRouter = Backbone.Router.extend({
         "":"home",
         "home":"home",
         "projects":"projects",
-        "projects/:id":"projectDetails"
+        "projects/:id":"projectDetails",
+        "contact":"contact"
     },
 
     initialize:function () {
@@ -50,11 +52,11 @@ var AppRouter = Backbone.Router.extend({
         }, 4500);
 
         setTimeout(function(){
-            detectMouseWheel('home', true);
+            detectMouseWheel('home');
         }, 4500);
 
         $('.scrolldown').click(function(){
-            slide(true);
+            slide('home', true, true);
         });
 
         settings.home = true;
@@ -64,7 +66,7 @@ var AppRouter = Backbone.Router.extend({
         if(settings.detailProject!==true){
             if(settings.home!==true){
                 $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
-                $('.home, .portfolio, .home .content, .portfolio .content').addClass('slidedown');
+                $('.home, .portfolio, .contact').addClass('slidedown');
                 setTimeout(function(){
                     $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
                     setTimeout(function(){
@@ -89,7 +91,7 @@ var AppRouter = Backbone.Router.extend({
             showItemsProjects(false);
         }
 
-        detectMouseWheel('projects', false);
+        detectMouseWheel('projects');
 
         if(settings.projects !== true && settings.detailProject !== true){
             this.projectList.fetch({success: function() {
@@ -196,6 +198,15 @@ var AppRouter = Backbone.Router.extend({
         }
 
         settings.detailProject = true;
+    },
+    contact:function () {
+        if(settings.contact !== true){
+            $('.home, .portfolio, .contact').addClass('slidedown2');
+        }else{
+
+        }
+        detectMouseWheel('contact');
+        settings.contact = true;
     }
 });
 
@@ -228,16 +239,19 @@ function loadingSite(){
     }
 }
 
-function detectMouseWheel(route, dir){
+function detectMouseWheel(route){
     var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
     
-    if(route==='home'){
-        $(window).bind(mousewheelevt, function(e){
+    if(route==='home' || route === 'contact'){
+        $('.home, .contact').bind(mousewheelevt, function(e){
             var evt = window.event || e //equalize event object     
             evt = evt.originalEvent ? evt.originalEvent : evt; //convert to originalEvent if possible               
             var delta = evt.detail ? evt.detail*(-40) : evt.wheelDelta //check for detail first, because it is used by Opera and FF
-            if(delta < 0) {
-                slide(dir);
+            if(route==='home' && delta < 0){
+                slide(route, true, true);
+            }
+            if(route==='contact' && delta > 0) {
+                slide(route, false, true);
             }
         });
     }else{
@@ -246,32 +260,72 @@ function detectMouseWheel(route, dir){
             evt = evt.originalEvent ? evt.originalEvent : evt; //convert to originalEvent if possible               
             var delta = evt.detail ? evt.detail*(-40) : evt.wheelDelta //check for detail first, because it is used by Opera and FF
             if(delta > 0) {
-                slide(dir);
+                slide(route, false, true);
+            }else{
+                slide(route, true, true);
             }
         });
     }
 }
 
-function slide(down){
+function slide(route, dir, mswl){
     $('.menu-button').removeClass('show');
-    if(down === true){
-        location.replace("#projects");
-        $('.home .content').addClass('slidedown');
-        setTimeout(function(){
-            $('.home, .portfolio').addClass('slidedown');
-        },500);
-        setTimeout(function(){
-            $('.portfolio .content').addClass('slidedown');
-        },1300);
+    if(mswl === true){
+        if(route === 'home'){
+            console.log('test1');
+            location.replace("#projects");
+            $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+            setTimeout(function(){
+                $('.home, .portfolio, .contact').addClass('slidedown');
+            },500);
+            setTimeout(function(){
+                $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+            },1300);
+        }else if(route ==='contact'){
+            console.log('test2');
+            location.replace("#projects");
+            $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+            setTimeout(function(){
+                $('.home, .portfolio, .contact').removeClass('slidedown2');
+            },500);
+            setTimeout(function(){
+                $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+            },1300);
+        }else{
+            if(dir === true){
+                console.log('test3');
+                location.replace("#contact");
+                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                setTimeout(function(){
+                    $('.home, .portfolio, .contact').addClass('slidedown2');
+                },500);
+                setTimeout(function(){
+                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                },1300);
+            }else{
+                console.log('test4');
+                location.replace("#home");
+                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                setTimeout(function(){
+                    $('.home, .portfolio, .contact').removeClass('slidedown');
+                },500);
+                setTimeout(function(){
+                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                },1300);
+            }
+        }
+        // if(route === 'home'){
+        //     location.replace("#projects");
+        //     $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+        //     setTimeout(function(){
+        //         $('body').scrollTo($('.portfolio').position().top, { duration:800 });
+        //         setTimeout(function(){
+        //             $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+        //         }, 800);
+        //     },500);
+        // }
     }else{
-        location.replace("#home");
-        $('.portfolio .content').removeClass('slidedown');
-        setTimeout(function(){
-            $('.home, .portfolio').removeClass('slidedown');
-        },500);
-        setTimeout(function(){
-            $('.home .content').removeClass('slidedown');
-        },1300);
+
     }
 }
 
@@ -444,7 +498,7 @@ function changeProject(theClass, mousewheelevt, id){
                         $('.menu-button').addClass('show');
                         $('#change-load').removeClass('on');
                     },500);
-                },500);
+                },700);
             },700);
         },800);
     }
