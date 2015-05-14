@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="./css/reset.css" />
         <link rel="stylesheet" type="text/css" href="./css/fonts.css" />
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     </head>
     <body class="noscroll">
         <section class="home-loader">
@@ -19,14 +20,14 @@
                 <div></div>
             </div>
         </section>
-        <a href="#" class="menu-button">
+        <button class="menu-button">
             <span></span>
-        </a>
+        </button>
         <section class="menu"><!--
-            --><ul class="menuUl">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">My portfolio</a></li>
-                <li><a href="#">Contact me</a></li>
+            --><ul data-location='' class="menuUl">
+                <li><button data-route='home'>Home</button></li>
+                <li><button data-route='projects'>My portfolio</button></li>
+                <li><button data-route='contact'>Contact me</button></li>
             </ul>
             <div class="name">
                 <h2>Antoine <strong>Mourgues</strong></h2>
@@ -34,7 +35,11 @@
             </div>
             <div class="social">
                 <p>Get in touch ! On the social networks</p>
-                <ul></ul>
+                <ul>
+                    <li><a href="https://fr.linkedin.com/pub/antoine-mourgues/a3/758/70a"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="https://twitter.com/antoinemourgues"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/102615161234242547226/posts?hl=fr"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
             </div>
         </section>
         <section class="home">

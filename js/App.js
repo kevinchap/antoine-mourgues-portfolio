@@ -44,12 +44,19 @@ var AppRouter = Backbone.Router.extend({
     },
  
     home:function () {
-        setTimeout(function(){
-            $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+        $('.menuUl').attr('data-location','home');
+        if(settings.home === true || (settings.home!==true && settings.projects===true) || (settings.home!==true && settings.contact===true)){
             setTimeout(function(){
                 $('.menu-button').addClass('show');
-            }, 2500);
-        }, 4500);
+            },2700);
+        }else{
+            setTimeout(function(){
+                $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+                setTimeout(function(){
+                    $('.menu-button').addClass('show');
+                }, 2500);
+            }, 4500);
+        }
 
         setTimeout(function(){
             detectMouseWheel('home');
@@ -63,31 +70,39 @@ var AppRouter = Backbone.Router.extend({
     },
 
     projects:function () {
-        if(settings.detailProject!==true){
-            if(settings.home!==true){
-                $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
-                $('.home, .portfolio, .contact').addClass('slidedown');
-                setTimeout(function(){
-                    $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+        $('.menuUl').attr('data-location','projects');
+        if(settings.contact!==true){
+            if(settings.detailProject!==true){
+                if(settings.home!==true){
+                    $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+                    $('.home, .portfolio, .contact').addClass('slidedown');
                     setTimeout(function(){
-                        $('.menu-button').addClass('show');
-                    }, 500);
+                        $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                        setTimeout(function(){
+                            $('.menu-button').addClass('show');
+                        }, 500);
+                        setTimeout(function(){
+                            showItemsProjects(true);
+                        },2500);
+                    }, 4500);
+                }else{
                     setTimeout(function(){
-                        showItemsProjects(true);
-                    },2500);
-                }, 4500);
+                        $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                        setTimeout(function(){
+                            $('.menu-button').addClass('show');
+                        }, 500);
+                        setTimeout(function(){
+                            showItemsProjects(true);
+                        },2500);
+                    },2000);
+                }
             }else{
-                setTimeout(function(){
-                    $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
-                    setTimeout(function(){
-                        $('.menu-button').addClass('show');
-                    }, 500);
-                    setTimeout(function(){
-                        showItemsProjects(true);
-                    },2500);
-                },2000);
+                showItemsProjects(false);
             }
         }else{
+            setTimeout(function(){
+                $('.menu-button').addClass('show');
+            }, 1500);
             showItemsProjects(false);
         }
 
@@ -103,6 +118,7 @@ var AppRouter = Backbone.Router.extend({
     },
  
     projectDetails:function (id) {
+        $('.menuUl').attr('data-location','project');
         $('#project').addClass('visible');
         setTimeout(function(){
             $('#project').addClass('transitionOut');
@@ -154,6 +170,9 @@ var AppRouter = Backbone.Router.extend({
                             }
                             changeProject(theClass, mousewheelevt, id);
                         });
+                        $('.menu button').click(function(){
+                            slide($('.menuUl').attr('data-location'), $(this).attr('data-route'), false, mousewheelevt);
+                        });
                     }, 3000);
                 }, 3000);
             }, 4500);
@@ -192,6 +211,9 @@ var AppRouter = Backbone.Router.extend({
                             }
                             changeProject(theClass, mousewheelevt, id);
                         });
+                        $('.menu button').click(function(){
+                            slide($('.menuUl').attr('data-location'), $(this).attr('data-route'), false, mousewheelevt);
+                        });
                     }, 3000);
                 }, 3000);
             }, 500);
@@ -200,10 +222,36 @@ var AppRouter = Backbone.Router.extend({
         settings.detailProject = true;
     },
     contact:function () {
-        if(settings.contact !== true){
-            $('.home, .portfolio, .contact').addClass('slidedown2');
-        }else{
+        $('.menuUl').attr('data-location','contact');
+        if(settings.home !== true){
+            if(settings.projects===true){
+                setTimeout(function(){
+                    $('.menu-button').addClass('show');
+                }, 1500);
+            }else{
+                $('.home, .portfolio, .contact').addClass('slidedown');
+                $('.home, .portfolio, .contact').addClass('slidedown2');
+                $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
+                this.projectList.fetch({success: function() {
+                    $('#list-projects').html(new ProjectListView({model: settings.app.projectList}).render().el);
+                }});
+                $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                showItemsProjects(false);
 
+                setTimeout(function(){
+                    $('.menu-button').addClass('show');
+                }, 4500);
+            }
+        }else{
+            if(settings.projects===true){
+                setTimeout(function(){
+                    $('.menu-button').addClass('show');
+                }, 2300);
+            }else{
+                setTimeout(function(){
+                    $('.menu-button').addClass('show');
+                }, 2700);
+            }
         }
         detectMouseWheel('contact');
         settings.contact = true;
@@ -239,6 +287,25 @@ function loadingSite(){
     }
 }
 
+$('.menu-button').click(function(){
+    changeMenuButton();
+});
+
+function changeMenuButton(){
+    $('.menu').toggleClass('visible');
+    if($('.menu-button').hasClass('active')){
+        $('.menu-button').removeClass('rotate');
+        setTimeout(function(){
+            $('.menu-button').removeClass('active');
+        },500);
+    }else{
+        $('.menu-button').addClass('active');
+        setTimeout(function(){
+            $('.menu-button').addClass('rotate');
+        },500);
+    }
+}
+
 function detectMouseWheel(route){
     var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
     
@@ -268,11 +335,14 @@ function detectMouseWheel(route){
     }
 }
 
-function slide(route, dir, mswl){
+$('.menu button').click(function(){
+    slide($('.menuUl').attr('data-location'), $(this).attr('data-route'), false, -1);
+});
+
+function slide(route, dir, mswl, mswlevt){
     $('.menu-button').removeClass('show');
     if(mswl === true){
         if(route === 'home'){
-            console.log('test1');
             location.replace("#projects");
             $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
             setTimeout(function(){
@@ -282,7 +352,6 @@ function slide(route, dir, mswl){
                 $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
             },1300);
         }else if(route ==='contact'){
-            console.log('test2');
             location.replace("#projects");
             $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
             setTimeout(function(){
@@ -293,7 +362,6 @@ function slide(route, dir, mswl){
             },1300);
         }else{
             if(dir === true){
-                console.log('test3');
                 location.replace("#contact");
                 $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
                 setTimeout(function(){
@@ -303,7 +371,6 @@ function slide(route, dir, mswl){
                     $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
                 },1300);
             }else{
-                console.log('test4');
                 location.replace("#home");
                 $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
                 setTimeout(function(){
@@ -314,18 +381,167 @@ function slide(route, dir, mswl){
                 },1300);
             }
         }
-        // if(route === 'home'){
-        //     location.replace("#projects");
-        //     $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
-        //     setTimeout(function(){
-        //         $('body').scrollTo($('.portfolio').position().top, { duration:800 });
-        //         setTimeout(function(){
-        //             $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
-        //         }, 800);
-        //     },500);
-        // }
     }else{
-
+        $('.menu').removeClass('visible');
+        $('.menu-button').removeClass('rotate');
+        setTimeout(function(){
+            $('.menu-button').removeClass('active');
+        },500);
+        if(route === 'home'){
+            if(dir === 'projects'){
+                location.replace("#projects");
+                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                setTimeout(function(){
+                    $('.home, .portfolio, .contact').addClass('slidedown');
+                },500);
+                setTimeout(function(){
+                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                },1300);
+            }else{
+                location.replace("#contact");
+                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                setTimeout(function(){
+                    $('.home, .portfolio, .contact').addClass('slidedown');
+                    setTimeout(function(){
+                        $('.home, .portfolio, .contact').addClass('slidedown2');
+                    },500);
+                },500);
+                setTimeout(function(){
+                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                },2200);
+            }
+        }
+        if(route === 'projects'){
+            if(dir === 'home'){
+                location.replace("#home");
+                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                setTimeout(function(){
+                    $('.home, .portfolio, .contact').removeClass('slidedown');
+                },500);
+                setTimeout(function(){
+                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                },1300);
+            }else{
+                location.replace("#contact");
+                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                setTimeout(function(){
+                    $('.home, .portfolio, .contact').addClass('slidedown2');
+                },500);
+                setTimeout(function(){
+                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                },1300);
+            }
+        }
+        if(route === 'contact'){
+            if(dir === 'projects'){
+                location.replace("#projects");
+                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                setTimeout(function(){
+                    $('.home, .portfolio, .contact').removeClass('slidedown2');
+                },500);
+                setTimeout(function(){
+                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                },1300);
+            }else{
+                location.replace("#home");
+                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                setTimeout(function(){
+                    $('.home, .portfolio, .contact').removeClass('slidedown2');
+                    setTimeout(function(){
+                        $('.home, .portfolio, .contact').removeClass('slidedown');
+                    },500);
+                },500);
+                setTimeout(function(){
+                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                },2200);
+            }
+        }
+        if(route === 'project'){
+            if(dir === 'projects'){
+                $('.menu-button').removeClass('show');
+                $('#project #close-load').addClass('on');
+                setTimeout(function(){
+                    $('#project #close-load').addClass('load');
+                    setTimeout(function(){
+                        $('#project .content-project').addClass('invisible');
+                        setTimeout(function(){
+                            $('#project').removeClass('visible');
+                            setTimeout(function(){
+                                $('#project').removeClass('transitionOut');
+                                $('#project').html('');
+                                $('.menu-button').addClass('show');
+                                $(window).unbind(mswlevt);
+                                location.replace("#projects");
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 800);
+            }
+            if(dir === 'home'){
+                $('.menu-button').removeClass('show');
+                $('#project #close-load').addClass('on');
+                setTimeout(function(){
+                    $('#project #close-load').addClass('load');
+                    setTimeout(function(){
+                        $('#project .content-project').addClass('invisible');
+                        setTimeout(function(){
+                            $('#project').removeClass('visible');
+                            setTimeout(function(){
+                                $('#project').removeClass('transitionOut');
+                                $('#project').html('');
+                                setTimeout(function(){
+                                    $('.menu-button').addClass('show');
+                                },2000);
+                                $(window).unbind(mswlevt);
+                                location.replace("#projects");
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 800);
+                setTimeout(function(){
+                    location.replace("#home");
+                    $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                    setTimeout(function(){
+                        $('.home, .portfolio, .contact').removeClass('slidedown');
+                    },500);
+                    setTimeout(function(){
+                        $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                    },1300);
+                },2500);
+            }
+            if(dir === 'contact'){
+                $('.menu-button').removeClass('show');
+                $('#project #close-load').addClass('on');
+                setTimeout(function(){
+                    $('#project #close-load').addClass('load');
+                    setTimeout(function(){
+                        $('#project .content-project').addClass('invisible');
+                        setTimeout(function(){
+                            $('#project').removeClass('visible');
+                            setTimeout(function(){
+                                $('#project').removeClass('transitionOut');
+                                $('#project').html('');
+                                setTimeout(function(){
+                                    $('.menu-button').addClass('show');
+                                },2000);
+                                $(window).unbind(mswlevt);
+                                location.replace("#projects");
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 800);
+                setTimeout(function(){
+                    location.replace("#contact");
+                    $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                    setTimeout(function(){
+                        $('.home, .portfolio, .contact').addClass('slidedown2');
+                    },500);
+                    setTimeout(function(){
+                        $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                    },1300);
+                },2500);
+            }
+        }
     }
 }
 
