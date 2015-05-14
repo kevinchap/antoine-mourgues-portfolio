@@ -100,10 +100,23 @@ var AppRouter = Backbone.Router.extend({
                 showItemsProjects(false);
             }
         }else{
-            setTimeout(function(){
-                $('.menu-button').addClass('show');
-            }, 1500);
-            showItemsProjects(false);
+            if(settings.home===true){
+                setTimeout(function(){
+                    $('.presentation, .presentation h2, .presentation > p, .presentation .mourgues, .presentation .name').addClass('show');
+                    setTimeout(function(){
+                        $('.menu-button').addClass('show');
+                    }, 500);
+                    setTimeout(function(){
+                        showItemsProjects(true);
+                    },2500);
+                }, 2000);
+            }else{
+                setTimeout(function(){
+                    $('.menu-button').addClass('show');
+                }, 1500);
+                showItemsProjects(false);
+            }
+            
         }
 
         detectMouseWheel('projects');
@@ -227,7 +240,10 @@ var AppRouter = Backbone.Router.extend({
             if(settings.projects===true){
                 setTimeout(function(){
                     $('.menu-button').addClass('show');
-                }, 1500);
+                }, 2300);
+                setTimeout(function(){
+                    $('.presentation-contact, .contact .map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
+                }, 1800);
             }else{
                 $('.home, .portfolio, .contact').addClass('slidedown');
                 $('.home, .portfolio, .contact').addClass('slidedown2');
@@ -241,16 +257,25 @@ var AppRouter = Backbone.Router.extend({
                 setTimeout(function(){
                     $('.menu-button').addClass('show');
                 }, 4500);
+                setTimeout(function(){
+                    $('.presentation-contact, .contact .map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
+                }, 4000);
             }
         }else{
             if(settings.projects===true){
                 setTimeout(function(){
                     $('.menu-button').addClass('show');
                 }, 2300);
+                setTimeout(function(){
+                    $('.presentation-contact, .contact .map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
+                }, 1800);
             }else{
                 setTimeout(function(){
                     $('.menu-button').addClass('show');
-                }, 2700);
+                }, 3000);
+                setTimeout(function(){
+                    $('.presentation-contact, .contact .map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
+                }, 2500);
             }
         }
         detectMouseWheel('contact');
@@ -388,72 +413,84 @@ function slide(route, dir, mswl, mswlevt){
             $('.menu-button').removeClass('active');
         },500);
         if(route === 'home'){
-            if(dir === 'projects'){
-                location.replace("#projects");
-                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
-                setTimeout(function(){
-                    $('.home, .portfolio, .contact').addClass('slidedown');
-                },500);
-                setTimeout(function(){
-                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
-                },1300);
-            }else{
-                location.replace("#contact");
-                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
-                setTimeout(function(){
-                    $('.home, .portfolio, .contact').addClass('slidedown');
+            if(dir !== 'home'){
+                if(dir === 'projects'){
+                    location.replace("#projects");
+                    $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
                     setTimeout(function(){
-                        $('.home, .portfolio, .contact').addClass('slidedown2');
+                        $('.home, .portfolio, .contact').addClass('slidedown');
                     },500);
-                },500);
-                setTimeout(function(){
-                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
-                },2200);
+                    setTimeout(function(){
+                        $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                    },1300);
+                }else{
+                    location.replace("#contact");
+                    $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                    setTimeout(function(){
+                        $('.home, .portfolio, .contact').addClass('slidedown');
+                        setTimeout(function(){
+                            $('.home, .portfolio, .contact').addClass('slidedown2');
+                        },500);
+                    },500);
+                    setTimeout(function(){
+                        $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                    },2200);
+                }
+            }else{
+                $('.menu-button').addClass('show');
             }
         }
         if(route === 'projects'){
-            if(dir === 'home'){
-                location.replace("#home");
-                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
-                setTimeout(function(){
-                    $('.home, .portfolio, .contact').removeClass('slidedown');
-                },500);
-                setTimeout(function(){
-                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
-                },1300);
-            }else{
-                location.replace("#contact");
-                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
-                setTimeout(function(){
-                    $('.home, .portfolio, .contact').addClass('slidedown2');
-                },500);
-                setTimeout(function(){
-                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
-                },1300);
-            }
-        }
-        if(route === 'contact'){
-            if(dir === 'projects'){
-                location.replace("#projects");
-                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
-                setTimeout(function(){
-                    $('.home, .portfolio, .contact').removeClass('slidedown2');
-                },500);
-                setTimeout(function(){
-                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
-                },1300);
-            }else{
-                location.replace("#home");
-                $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
-                setTimeout(function(){
-                    $('.home, .portfolio, .contact').removeClass('slidedown2');
+            if(dir !== 'projects'){
+                if(dir === 'home'){
+                    location.replace("#home");
+                    $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
                     setTimeout(function(){
                         $('.home, .portfolio, .contact').removeClass('slidedown');
                     },500);
-                },500);
-                setTimeout(function(){
-                    $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
-                },2200);
+                    setTimeout(function(){
+                        $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                    },1300);
+                }else{
+                    location.replace("#contact");
+                    $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                    setTimeout(function(){
+                        $('.home, .portfolio, .contact').addClass('slidedown2');
+                    },500);
+                    setTimeout(function(){
+                        $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                    },1300);
+                }
+            }else{
+                $('.menu-button').addClass('show');
+            }
+        }
+        if(route === 'contact'){
+            if(dir !== 'contact'){
+                if(dir === 'projects'){
+                    location.replace("#projects");
+                    $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                    setTimeout(function(){
+                        $('.home, .portfolio, .contact').removeClass('slidedown2');
+                    },500);
+                    setTimeout(function(){
+                        $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                    },1300);
+                }else{
+                    location.replace("#home");
+                    $('.home .content, .portfolio .content, .contact .content').addClass('dezoom');
+                    setTimeout(function(){
+                        $('.home, .portfolio, .contact').removeClass('slidedown2');
+                        setTimeout(function(){
+                            $('.home, .portfolio, .contact').removeClass('slidedown');
+                        },500);
+                    },500);
+                    setTimeout(function(){
+                        $('.home .content, .portfolio .content, .contact .content').removeClass('dezoom');
+                    },2200);
+                }
+            }else{
+                $('.menu-button').addClass('show');
             }
         }
         if(route === 'project'){
