@@ -86,13 +86,12 @@ var AppRouter = Backbone.Router.extend({
                 },2000);
             }
         }else{
-            // showItemsProjects(false);
+            showItemsProjects(false);
         }
 
         detectMouseWheel('projects', false);
 
-        if(settings.projects !== true){
-            console.log("c'est ça");
+        if(settings.projects !== true && settings.detailProject !== true){
             this.projectList.fetch({success: function() {
                 $('#list-projects').html(new ProjectListView({model: settings.app.projectList}).render().el);
             }});
@@ -147,7 +146,11 @@ var AppRouter = Backbone.Router.extend({
                         });
                         $('.nav li button').click(function(){
                             var theClass = $(this).attr('class');
-                            changeProject(theClass, mousewheelevt);
+                            var id = -1;
+                            if($(this).attr('data-other')){
+                                id = $(this).attr('data-other');
+                            }
+                            changeProject(theClass, mousewheelevt, id);
                         });
                     }, 3000);
                 }, 3000);
@@ -181,7 +184,11 @@ var AppRouter = Backbone.Router.extend({
                         });
                         $('.nav li button').click(function(){
                             var theClass = $(this).attr('class');
-                            changeProject(theClass, mousewheelevt);
+                            var id = -1;
+                            if($(this).attr('data-other')){
+                                id = $(this).attr('data-other');
+                            }
+                            changeProject(theClass, mousewheelevt, id);
                         });
                     }, 3000);
                 }, 3000);
@@ -285,8 +292,8 @@ function showItemsProjects(time){
     }else{
         setTimeout(function(){
             $('.portfolio #list-projects > ul > li').css('width', $('.presentation').offset().left+'px')
-            $('.portfolio #list-projects > ul > li').addClass('show');
-        },100);
+            $('.portfolio #list-projects > ul > li').addClass('showWithoutTransition');
+        },50);
     }
     for(i=nbAlreadyInView; i<lis.length; i++){
         $(lis[i]).bind('inview',function(event, isInView, visiblePartX, visiblePartY){
@@ -390,12 +397,8 @@ function timelineScroll(elmt){
 function timelineProgress(elmt){
     var height = ($('#project .timeline').height()*elmt.scrollTop)/($('.contain-sections').height()-($('.one-section').height()));
     $('#project .timeline .line div').css('height', height+'px');
-    // console.log($('.contain-sections').height());
-    // console.log(elmt.scrollTop+$('.one-section').height());
-    console.log('height : '+height);
     var btns = $('.button_m');
     for(var i=0; i<btns.length; i++){
-        console.log('top button : '+$(btns[i]).position().top);
         if(height>=$(btns[i]).position().top){
             $(btns[i]).addClass('active');
         }else{
@@ -404,12 +407,8 @@ function timelineProgress(elmt){
     }
 }
 
-function changeProject(theClass, mousewheelevt){
+function changeProject(theClass, mousewheelevt, id){
     if(theClass === 'close'){
-        // $('#project').removeClass('visible');
-        // $('#project').html('');
-        // $(window).unbind(mousewheelevt);
-        // location.replace("#projects");
         $('.menu-button').removeClass('show');
         $('#project #close-load').addClass('on');
         setTimeout(function(){
@@ -429,9 +428,26 @@ function changeProject(theClass, mousewheelevt){
             }, 500);
         }, 800);
     }else{
-
+        if($('#project #close-load').hasClass('proj-left')){
+            $('#change-load').addClass('proj-left');
+        }
+        $('.menu-button').removeClass('show');
+        $('#change-load').addClass('on');
+        setTimeout(function(){
+            $('#change-load').addClass('load');
+            setTimeout(function(){
+                $('#change-load').toggleClass('proj-left');
+                location.replace("#projects/"+id);
+                setTimeout(function(){
+                    $('#change-load').removeClass('load');
+                    setTimeout(function(){
+                        $('.menu-button').addClass('show');
+                        $('#change-load').removeClass('on');
+                    },500);
+                },500);
+            },700);
+        },800);
     }
-    // console.log($(elmt).attr('data-other'));
 }
 
 

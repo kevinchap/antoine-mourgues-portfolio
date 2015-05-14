@@ -491,10 +491,18 @@ body.noscroll{overflow: hidden;}
 	-webkit-transform: translateX(-50px);
 	-o-transform: translateX(-50px);
 	transform: translateX(-50px);
-	-webkit-transition: all .4s ease;
-  	transition: all .4s ease;
 }
 .portfolio #list-projects > ul > li.show{
+	-webkit-transition: all .4s ease;
+  	transition: all .4s ease;
+	opacity: 1;
+	visibility: visible;
+	-moz-transform: translateX(0);
+	-webkit-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
+}
+.portfolio #list-projects > ul > li.showWithoutTransition{
 	opacity: 1;
 	visibility: visible;
 	-moz-transform: translateX(0);
@@ -530,10 +538,13 @@ body.noscroll{overflow: hidden;}
 	left:50%;
 	z-index: 1;
 	width:0;margin-left:0;
-	-webkit-transition: all .4s .4s ease;
-  	transition: all .4s .4s ease;
 }
 .portfolio #list-projects > ul > li.show button::after{
+	-webkit-transition: all .4s .4s ease;
+  	transition: all .4s .4s ease;
+	width:250px;margin-left:-125px;
+}
+.portfolio #list-projects > ul > li.showWithoutTransition button::after{
 	width:250px;margin-left:-125px;
 }
 .portfolio #list-projects > ul > li button:hover::after{
@@ -1367,26 +1378,27 @@ body.noscroll{overflow: hidden;}
 	background: url(../img/dots2.png) repeat-y top center;
 }
 /* close and change project section */
-#project #change-load, #project #close-load{
+#change-load, #project #close-load{
 	position:fixed;
 	top:0;right:0;
 	width:24%;height:100%;
 	background:#333333;
 	z-index:5;
+	right:0;left:auto;
 
 	opacity:0;
 	visibility:hidden;
 	-webkit-transition: all .5s ease;
   	transition: all .5s ease;
 }
-#project #change-load.proj-left, #project #close-load.proj-left{
-	left:0;
+#change-load.proj-left, #project #close-load.proj-left{
+	left:0;right:auto;
 }
-#project #change-load.on, #project #close-load.on{
+#change-load.on, #project #close-load.on{
 	opacity:1;
 	visibility:visible;
 }
-#project #change-load.load, #project #close-load.load{
+#change-load.load, #project #close-load.load{
 	width:100%;
 }
 
