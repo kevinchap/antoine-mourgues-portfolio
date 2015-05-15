@@ -1493,9 +1493,8 @@ body.noscroll{overflow: hidden;}
 	background:white;
 }
 .contact .presentation-contact{
+	box-sizing: border-box;
 	width:100%;height:100%;
-	/*float:right;*/
-	
 	padding:90px 50px;
 	background: #333333;
 	-ms-transform: translateX(100%);
