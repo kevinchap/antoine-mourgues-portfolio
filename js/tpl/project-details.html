@@ -42,6 +42,7 @@
 		       </section>
 		   	<% }); %>
 		   	<section class='last-section'>
+		   		<div class="pointillers"></div>
 		   		<div class="button"><a href="<%= url %>" target="_blank">see the project</a></div>
 		   		<p>Thanks for watching !</p>
 		   		<p>Use the arrows  to discover next project</p>
@@ -57,7 +58,7 @@
 					<% }); %>
 				</div>
 				<script>
-					$('.spacing').css('height', ($('.timeline').height()-($('.button_m').length*42.5))/($('.button_m').length*2)+'px');
+					$('.spacing').css('height', ($('.timeline').height()-($('.button_m').length*29.5))/($('.button_m').length*2)+'px');
 				</script>
 				<button class="b-nav end" onclick="timelineScroll(this);">end</button>
 			</section>

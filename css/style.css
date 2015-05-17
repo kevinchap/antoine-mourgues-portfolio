@@ -341,8 +341,8 @@ body.noscroll{overflow: hidden;}
 	bottom:20px;
 	opacity: 0;
 	visibility: hidden;
-	-webkit-transition: all .8s 1.6s ease-in-out;
-  	transition: all .8s 1.6s ease-in-out;
+	-webkit-transition: all .8s 1.2s ease-in-out;
+  	transition: all .8s 1.2s ease-in-out;
 }
 .title h1.show, .title h2.show{
 	bottom:40px;
@@ -382,8 +382,8 @@ body.noscroll{overflow: hidden;}
 	top:2px;
 
 	width:0px;
-	-webkit-transition: width 1s .6s ease;
-  	transition: width 1s .6s ease;
+	-webkit-transition: width .8s .4s ease;
+  	transition: width .8s .4s ease;
 }
 .title .seperate.show::before, .title .seperate.show::after{
 	width:100px;
@@ -404,8 +404,8 @@ body.noscroll{overflow: hidden;}
 	top:20px;
 	opacity: 0;
 	visibility: hidden;
-	-webkit-transition: all .8s 1.6s ease-in-out;
-  	transition: all .8s 1.6s ease-in-out;
+	-webkit-transition: all .8s 1.2s ease-in-out;
+  	transition: all .8s 1.2s ease-in-out;
 }
 .title p.show{
 	top:50px;
@@ -424,8 +424,8 @@ body.noscroll{overflow: hidden;}
 	margin-bottom:-30px;
 	opacity: 0;
 	visibility: hidden;
-	-webkit-transition: all .8s 2.5s ease-in-out;
-  	transition: all .8s 2.5s ease-in-out;
+	-webkit-transition: all .8s 2s ease-in-out;
+  	transition: all .8s 2s ease-in-out;
 }
 .home .scrolldown.show, .home .made-by.show{
 	margin-bottom:0;
@@ -587,8 +587,8 @@ body.noscroll{overflow: hidden;}
 	width:0;margin-left:0;
 }
 .portfolio #list-projects > ul > li.show button::after{
-	-webkit-transition: all .4s .4s ease;
-  	transition: all .4s .4s ease;
+	-webkit-transition: all .4s .2s ease;
+  	transition: all .4s .2s ease;
 	width:250px;margin-left:-125px;
 }
 .portfolio #list-projects > ul > li.showWithoutTransition button::after{
@@ -704,8 +704,8 @@ body.noscroll{overflow: hidden;}
     transform: translateY(-10px);
 	opacity: 0;
 	visibility: hidden;
-	-webkit-transition: all .8s 1.3s ease;
-  	transition: all .8s 1.3s ease;
+	-webkit-transition: all .8s 1s ease;
+  	transition: all .8s 1s ease;
 }
 .portfolio .presentation h2.show{
 	-ms-transform: translateY(0);
@@ -730,8 +730,8 @@ body.noscroll{overflow: hidden;}
     transform: translateY(-10px);
 	opacity: 0;
 	visibility: hidden;
-	-webkit-transition: all .8s 1.3s ease;
-  	transition: all .8s 1.3s ease;
+	-webkit-transition: all .8s 1s ease;
+  	transition: all .8s 1s ease;
 }
 .portfolio .presentation > p.show{
 	-ms-transform: translateY(0);
@@ -753,8 +753,8 @@ body.noscroll{overflow: hidden;}
     margin-top: 50px;
 	opacity: 0;
 	visibility: hidden;
-	-webkit-transition: all .8s 2.1s ease;
-  	transition: all .8s 2.1s ease;
+	-webkit-transition: all .8s 1.4s ease;
+  	transition: all .8s 1.4s ease;
 }
 .portfolio .presentation .mourgues.show{
 	margin-top: 60px;
@@ -768,8 +768,8 @@ body.noscroll{overflow: hidden;}
     transform: translateY(-10px);
 	opacity: 0;
 	visibility: hidden;
-	-webkit-transition: all .8s 2.1s ease;
-  	transition: all .8s 2.1s ease;
+	-webkit-transition: all .8s 1.4s ease;
+  	transition: all .8s 1.4s ease;
 }
 .portfolio .presentation .name.show{
 	-ms-transform: translateY(0);
@@ -858,8 +858,8 @@ body.noscroll{overflow: hidden;}
 	-ms-transform: translateY(20px);
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
-    -webkit-transition: all .5s 2.5s ease;
-  	transition: all .5s 2.5s ease;
+    -webkit-transition: all .5s 2s ease;
+  	transition: all .5s 2s ease;
 }
 #project .title .client.show{
 	opacity:1;
@@ -879,8 +879,8 @@ body.noscroll{overflow: hidden;}
 	-ms-transform: translateY(20px);
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
-    -webkit-transition: all .5s 3s ease;
-  	transition: all .5s 3s ease;
+    -webkit-transition: all .5s 2.2s ease;
+  	transition: all .5s 2.2s ease;
 }
 #project .scroll-discover.show{
 	opacity:1;
@@ -995,16 +995,16 @@ body.noscroll{overflow: hidden;}
     transform: translateY(-20px);
 }
 #project .presentation-project div:first-child{
-	-webkit-transition: all .5s .5s ease;
-  	transition: all .5s .5s ease;
+	-webkit-transition: all .5s .6s ease;
+  	transition: all .5s .6s ease;
 }
 #project .presentation-project div:nth-child(2){
-	-webkit-transition: all .5s 1s ease;
-  	transition: all .5s 1s ease;
+	-webkit-transition: all .5s .9s ease;
+  	transition: all .5s .9s ease;
 }
 #project .presentation-project div:nth-child(3){
-	-webkit-transition: all .5s 1.5s ease;
-  	transition: all .5s 1.5s ease;
+	-webkit-transition: all .5s 1.2s ease;
+  	transition: all .5s 1.2s ease;
 }
 #project .presentation-project div.show{
 	opacity:1;
@@ -1064,16 +1064,16 @@ body.noscroll{overflow: hidden;}
     transform: translateY(20px);
 }
 #project .presentation-project .nav li:first-child{
-	-webkit-transition: all .5s 2s ease;
-	transition: all .5s 2s ease;
+	-webkit-transition: all .5s 1s ease;
+	transition: all .5s 1s ease;
 }
 #project .presentation-project .nav li:nth-child(2){
-	-webkit-transition: all .5s 2.3s ease;
-	transition: all .5s 2.3s ease;
+	-webkit-transition: all .5s 1.3s ease;
+	transition: all .5s 1.3s ease;
 }
 #project .presentation-project .nav li:last-child{
-	-webkit-transition: all .5s 2.6s ease;
-	transition: all .5s 2.6s ease;
+	-webkit-transition: all .5s 1.6s ease;
+	transition: all .5s 1.6s ease;
 }
 #project .presentation-project .nav li.show{
 	opacity:1;
@@ -1151,8 +1151,8 @@ body.noscroll{overflow: hidden;}
 	width:auto;height:50px;
 	display:table-cell;
   	vertical-align:bottom;
-  	font-family:"SourceSansPro-Light";
-  	font-size:14px;font-size:1.4rem;
+  	font-family:"SourceSansPro-Regular";
+  	font-size:11px;font-size:1.1rem;
   	text-transform:uppercase;
   	color:#76ffd8;
 }
@@ -1182,9 +1182,6 @@ body.noscroll{overflow: hidden;}
 #project .detail-project .one-section{
 	position:relative;
 	width:100%;
-}
-#project .detail-project .one-section.show{
-
 }
 #project .detail-project .contain-sections.proj-left{
 	left:24%;
@@ -1266,6 +1263,10 @@ body.noscroll{overflow: hidden;}
 }
 #project .last-section{position:relative;width:100%;text-align:center;}
 #project .last-section.proj-left{left:24%;}
+#project .last-section .pointillers{
+	width:100%;height:150px;
+	background: url(../img/dots.png) repeat-y top center;
+}
 #project .last-section .button{
 	position:relative;
 	width:240px;
@@ -1328,15 +1329,15 @@ body.noscroll{overflow: hidden;}
 #project .timeline-container{
 	position:fixed;
 	width:35px;height:84%;
-	top:8%;left:1%;
+	top:8%;left:2%;
 
 	opacity:0;
 	visibility:hidden;
 	-ms-transform: translateX(-20px);
     -webkit-transform: translateX(-20px);
     transform: translateX(-20px);
-    -webkit-transition: all .5s 3s ease;
-  	transition: all .5s 3s ease;
+    -webkit-transition: all .5s 2.2s ease;
+  	transition: all .5s 2.2s ease;
 }
 #project .timeline-container.show{
 	opacity:1;
@@ -1346,7 +1347,7 @@ body.noscroll{overflow: hidden;}
     transform: translateX(0);
 }
 #project .contain-sections.proj-left .timeline-container{
-	left:25%;
+	left:26%;
 }
 #project .start, #project .end{
 	width:100%;height:2%;
@@ -1358,6 +1359,8 @@ body.noscroll{overflow: hidden;}
 	background:none;border:none;padding:0;
 	cursor:pointer;
 }
+#project .start{margin-bottom:5px;}
+#project .end{margin-top:5px;}
 #project .timeline{
 	position:relative;
 	height:96%;width:100%;
@@ -1369,7 +1372,7 @@ body.noscroll{overflow: hidden;}
 }
 #project .timeline .line div{
 	position:absolute;
-	top:0;left:50%;margin-left:-1px; 
+	top:0;left:50%;margin-left:0; 
 	width:1px;height:0;
 	display:inline-block;
 	background:#fff;
@@ -1387,11 +1390,13 @@ body.noscroll{overflow: hidden;}
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-#project .timeline .button_m{width:100%;height:42.5px;}
+#project .timeline .button_m{width:100%;height:29.5px;margin-top:5px;}
 #project .timeline .button_m button{
 	background:url(../img/btn-timeline-border.png) no-repeat center center;border:none;padding:0;
-	width:30px;height:30px;
-	margin-left:3px;
+	-webkit-background-size: cover;
+	background-size: cover;
+	width:25px;height:25px;
+	margin-left:5px;
 	cursor:pointer;
 	transform-origin: 50% 50%;
 	-ms-transform: rotate(45deg);
@@ -1408,7 +1413,7 @@ body.noscroll{overflow: hidden;}
 #project .timeline .button_m button span{
 	display: block;
 	width:100%;height:100%;
-	line-height:30px;
+	line-height:26px;
 	font-family:"ProximaNova-Regular";
 	font-size:12px;font-size:1.2rem;
 	color:#fff;
@@ -1515,9 +1520,6 @@ body.noscroll{overflow: hidden;}
 .contact #map{
 	position:relative;
 	width:76%;height:100%;
-	/*background:url(../img/map.jpg) no-repeat left center;
-	-webkit-background-size: cover;
-	background-size: cover;*/
 	-ms-transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);

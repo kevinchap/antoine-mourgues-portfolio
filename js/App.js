@@ -12,31 +12,14 @@ var settings = {
 
 // Router
 var AppRouter = Backbone.Router.extend({
- 
-    // routes:{
-    //     "":"list",
-    //     "wines/:id":"wineDetails"
-    // },
- 
-    // list:function () {
-    //     this.wineList = new WineCollection();
-    //     this.wineListView = new WineListView({model:this.wineList});
-    //     this.wineList.fetch();
-    //     $('#sidebar').html(this.wineListView.render().el);
-    // },
- 
-    // wineDetails:function (id) {
-    //     this.wine = this.wineList.get(id);
-    //     this.wineView = new WineView({model:this.wine});
-    //     $('#content').html(this.wineView.render().el);
-    // }
 
     routes:{
         "":"home",
         "home":"home",
         "projects":"projects",
         "projects/:id":"projectDetails",
-        "contact":"contact"
+        "contact":"contact",
+        '*notFound': 'home'
     },
 
     initialize:function () {
@@ -44,18 +27,19 @@ var AppRouter = Backbone.Router.extend({
     },
  
     home:function () {
+        location.replace("#home");
         $('.menuUl').attr('data-location','home');
         if(settings.home === true || (settings.home!==true && settings.projects===true) || (settings.home!==true && settings.contact===true)){
             setTimeout(function(){
                 $('.menu-button').addClass('show');
-            },2700);
+            },2200);
         }else{
             setTimeout(function(){
                 $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
                 setTimeout(function(){
                     $('.menu-button').addClass('show');
-                }, 2500);
-            }, 4500);
+                }, 2000);
+            }, 4000);
         }
 
         setTimeout(function(){
@@ -83,7 +67,7 @@ var AppRouter = Backbone.Router.extend({
                         }, 500);
                         setTimeout(function(){
                             showItemsProjects(true);
-                        },2500);
+                        },1800);
                     }, 4500);
                 }else{
                     setTimeout(function(){
@@ -93,7 +77,7 @@ var AppRouter = Backbone.Router.extend({
                         }, 500);
                         setTimeout(function(){
                             showItemsProjects(true);
-                        },2500);
+                        },2100);
                     },2000);
                 }
             }else{
@@ -108,7 +92,7 @@ var AppRouter = Backbone.Router.extend({
                     }, 500);
                     setTimeout(function(){
                         showItemsProjects(true);
-                    },2500);
+                    },2100);
                 }, 2000);
             }else{
                 setTimeout(function(){
@@ -186,8 +170,8 @@ var AppRouter = Backbone.Router.extend({
                         $('.menu button').click(function(){
                             slide($('.menuUl').attr('data-location'), $(this).attr('data-route'), false, mousewheelevt);
                         });
-                    }, 3000);
-                }, 3000);
+                    }, 2000);
+                }, 1500);
             }, 4500);
         }else{
             this.project = this.projectList.get(id);
@@ -227,8 +211,8 @@ var AppRouter = Backbone.Router.extend({
                         $('.menu button').click(function(){
                             slide($('.menuUl').attr('data-location'), $(this).attr('data-route'), false, mousewheelevt);
                         });
-                    }, 3000);
-                }, 3000);
+                    }, 2000);
+                }, 1500);
             }, 500);
         }
 
@@ -595,7 +579,7 @@ function showItemsProjects(time){
         for(i=0;i<nbAlreadyInView;i++){
             setTimeout(function(lis,i){
                 $(lis[i]).addClass('show');
-            },i*1200,lis,i);
+            },i*800,lis,i);
         }
     }else{
         setTimeout(function(){
@@ -637,7 +621,7 @@ function loadProject(id, background, top){
             $('#p-load').css({
                 "top": ($(window).height()/2)-150+'px'
             });
-        }, 500);
+        }, 200);
         // enlarge the loader section and add new transition
         setTimeout(function(){
             $('#p-load').css({
@@ -658,8 +642,8 @@ function loadProject(id, background, top){
                         "background-position": 'center center'
                     });
                 }
-            }, 1000);
-        }, 1500);
+            }, 1200);
+        }, 1000);
         // end of animation
         setTimeout(function(){
             // show list item project and presentation part
@@ -685,7 +669,7 @@ function loadProject(id, background, top){
                     settings.clickOn=true;
                 }, 500);
             }, 1000);
-        }, 3500);
+        }, 3200);
     }
 }
 
@@ -759,8 +743,6 @@ function changeProject(theClass, mousewheelevt, id){
 }
 
 function initializeMap(){
-    console.log('initialize');
-
     var styles = {
         'monTheme': [
         {
