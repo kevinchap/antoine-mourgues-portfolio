@@ -1325,7 +1325,7 @@ body.noscroll{overflow: hidden;}
 	background:url(../img/dots-button.png) repeat-y top center;
 	top:0;
 }
-#project .last-section .button a::before{left:0;}
+#project .last-section .button a::before{left:1px;}
 #project .last-section .button a::after{right:0;}
 #project .last-section p{
 	font-family:"ProximaNova-Light";
