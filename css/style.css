@@ -1087,6 +1087,7 @@ body.noscroll{overflow: hidden;}
 	display:inline-block;
 	vertical-align:top;
 	margin-top:20px;
+	max-width: 94px;
 }
 #project .presentation-project .work-details-title{
 	margin-right:20px;
