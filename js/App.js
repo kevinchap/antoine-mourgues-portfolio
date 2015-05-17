@@ -235,6 +235,7 @@ var AppRouter = Backbone.Router.extend({
         settings.detailProject = true;
     },
     contact:function () {
+        initializeMap();
         $('.menuUl').attr('data-location','contact');
         if(settings.home !== true){
             if(settings.projects===true){
@@ -242,7 +243,7 @@ var AppRouter = Backbone.Router.extend({
                     $('.menu-button').addClass('show');
                 }, 2300);
                 setTimeout(function(){
-                    $('.presentation-contact, .contact .map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
+                    $('.presentation-contact, .contact #map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
                 }, 1800);
             }else{
                 $('.home, .portfolio, .contact').addClass('slidedown');
@@ -258,7 +259,7 @@ var AppRouter = Backbone.Router.extend({
                     $('.menu-button').addClass('show');
                 }, 4500);
                 setTimeout(function(){
-                    $('.presentation-contact, .contact .map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
+                    $('.presentation-contact, .contact #map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
                 }, 4000);
             }
         }else{
@@ -267,14 +268,14 @@ var AppRouter = Backbone.Router.extend({
                     $('.menu-button').addClass('show');
                 }, 2300);
                 setTimeout(function(){
-                    $('.presentation-contact, .contact .map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
+                    $('.presentation-contact, .contact #map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
                 }, 1800);
             }else{
                 setTimeout(function(){
                     $('.menu-button').addClass('show');
                 }, 3000);
                 setTimeout(function(){
-                    $('.presentation-contact, .contact .map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
+                    $('.presentation-contact, .contact #map, .presentation-contact h2.tit, .presentation-contact p.desc, .presentation-contact div.infos, .presentation-contact div.soc').addClass('show');
                 }, 2500);
             }
         }
@@ -755,6 +756,46 @@ function changeProject(theClass, mousewheelevt, id){
             },700);
         },800);
     }
+}
+
+function initializeMap(){
+    console.log('initialize');
+
+    var styles = {
+        'monTheme': [
+        {
+            featureType: 'all',
+            stylers: [
+                {saturation: -100},
+                {gamma: 0.50}
+            ]
+        }
+    ]};
+
+    var latlng = new google.maps.LatLng(48.8841996, 2.4226105);
+
+    var options = {
+        center: latlng,
+        zoom: 17,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
+        scrollwheel: true,
+        mapTypeId: 'monTheme'
+    };
+    
+    var carte = new google.maps.Map(document.getElementById("map"), options);
+    var styledMapType = new google.maps.StyledMapType(styles['monTheme'], {name: 'monTheme'});
+    carte.mapTypes.set('monTheme', styledMapType);
+
+    var marker = new google.maps.Marker({
+        position: latlng,
+        map: carte,
+        icon: {
+            url: "./img/marker.png",
+            size: new google.maps.Size(150, 120),
+            anchor: new google.maps.Point(28, 120)
+        }
+    });
 }
 
 
