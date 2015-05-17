@@ -1739,6 +1739,8 @@ body.noscroll{overflow: hidden;}
 	font-family: "SourceSansPro-Light";
 	font-size:16px;font-size:1.6rem;
 	text-align: center;
+	line-height: 20px;
+	line-height: 2rem;
 }
 .mobile p strong{
 	font-family: "SourceSansPro-Bold";
