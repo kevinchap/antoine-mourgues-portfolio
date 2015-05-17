@@ -144,12 +144,40 @@ body.noscroll{overflow: hidden;}
 	height:60px;line-height:60px;
 	text-align: center;
 	font-family: "ProximaNova-Regular";
-	font-size:20px;font-size:2rem;
+	font-size:17px;font-size:1.7rem;
 	text-transform: uppercase;
 	border:none;
 	background:transparent;
 	color:white;
 	cursor: pointer;
+}
+.menu .menuUl li{
+	-moz-transform: translateY(-20px);
+	-webkit-transform: translateY(-20px);
+	-o-transform: translateY(-20px);
+	transform: translateY(-20px);
+	opacity:0;
+	visibility: hidden;
+}
+.menu .menuUl li:first-child{
+	-webkit-transition: all .8s .5s ease;
+  	transition: all .8s .5s ease;
+}
+.menu .menuUl li:nth-child(2){
+	-webkit-transition: all .8s .9s ease;
+  	transition: all .8s .9s ease;
+}
+.menu .menuUl li:last-child{
+	-webkit-transition: all .8s 1.3s ease;
+  	transition: all .8s 1.3s ease;
+}
+.menu.visible .menuUl li{
+	-moz-transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
+	opacity:1;
+	visibility: visible;
 }
 .menu .menuUl li button:hover{
 	background:#76ffd8;
@@ -161,6 +189,23 @@ body.noscroll{overflow: hidden;}
 	width:100%;
 	display:block;
 	text-align:center;
+
+	-moz-transform: translateY(-20px);
+	-webkit-transform: translateY(-20px);
+	-o-transform: translateY(-20px);
+	transform: translateY(-20px);
+	opacity:0;
+	visibility: hidden;
+	-webkit-transition: all .8s .3s ease;
+  	transition: all .8s .3s ease;
+}
+.menu.visible .name{
+	-moz-transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
+	opacity:1;
+	visibility: visible;
 }
 .menu .name h2{
 	font-size:22px;font-size:2.2rem;
@@ -181,7 +226,24 @@ body.noscroll{overflow: hidden;}
 	text-align: center;
 	bottom: 35px;
 	font-family: "SourceSansPro-Light";
-	font-size:18px;font-size:1.8rem;
+	font-size:16px;font-size:1.6rem;
+
+	-moz-transform: translateY(20px);
+	-webkit-transform: translateY(20px);
+	-o-transform: translateY(20px);
+	transform: translateY(20px);
+	opacity:0;
+	visibility: hidden;
+	-webkit-transition: all .8s 1s ease;
+  	transition: all .8s 1s ease;
+}
+.menu.visible .social{
+	-moz-transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
+	opacity:1;
+	visibility: visible;
 }
 .menu .social p{margin-bottom:24px;}
 .menu .social li{
@@ -192,7 +254,7 @@ body.noscroll{overflow: hidden;}
 .menu .social a{
 	position:relative;
 	display:block;
-	height:35px;width:35px;
+	height:30px;width:30px;
 	color:#6bdebd;
 	text-decoration:none;
 	transform: rotate(45deg);
@@ -672,9 +734,7 @@ body.noscroll{overflow: hidden;}
 }
 .portfolio .presentation{
 	width:100%;height:100%;
-	/*float:right;*/
-	
-	padding:90px 50px;
+	padding:90px 30px;
 	background: #333333;
 	-ms-transform: translateX(100%);
     -webkit-transform: translateX(100%);
@@ -961,7 +1021,7 @@ body.noscroll{overflow: hidden;}
 	position:relative;
 	top:0;right:0;
 	width:100%;height:100%;
-	padding:90px 50px;
+	padding:70px 30px;
 	background: #333333;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -1029,7 +1089,7 @@ body.noscroll{overflow: hidden;}
 	margin-top:20px;
 }
 #project .presentation-project .work-details-title{
-	margin-right:30px;
+	margin-right:20px;
 }
 #project .presentation-project .work-details-title li, #project .presentation-project .work-details li{
 	font-family:"ProximaNova-Light";
@@ -1086,66 +1146,20 @@ body.noscroll{overflow: hidden;}
 	position:absolute;
 	top:0;left:50%;margin-left:-15px;
 	width:30px;height:30px;
-	border:1px solid #76ffd8;
-	moz-border-radius: 100%;
-	-webkit-border-radius: 100%;
-	border-radius: 100%;
 	cursor:pointer;
-
 	background-color: transparent;
+	border:none;
+	padding:0;
+
 	-webkit-transition: all .5s ease;
   	transition: all .5s ease;
 }
-#project .presentation-project .nav li button:hover{background:#76ffd8;}
-
-
-#project .presentation-project .nav li button:before, #project .presentation-project .nav li button:after{
-	content: '';
-	position: absolute;
-	height: 1px;
-	width: 5px;
-
-	top: 15px;
-	right: 12px;
-	transform: rotate(225deg);
-	-webkit-transform: rotate(225deg);
-
-	background-color: #76ffd8;
-	-webkit-transition: all .5s ease;
-  	transition: all .5s ease;
+#project .presentation-project button:hover .back{
+	fill:rgb(118, 255, 216);
 }
-#project .presentation-project .nav li button:hover:before, #project .presentation-project .nav li button:hover:after{
-	background:#333333;
+#project .presentation-project button:hover .sign{
+	stroke:#333333;
 }
-#project .presentation-project .nav .prev button:after{
-	top: 12px;
-	transform: rotate(-225deg);
-	-webkit-transform: rotate(-225deg);
-}
-
-#project .presentation-project .nav .close button:before{
-	top: 13px;
-	left: 10px;
-	width: 9px;
-	transform: rotate(-225deg);
-	-webkit-transform: rotate(-225deg);
-}
-#project .presentation-project .nav .close button:after{
-	top: 13px;
-	left: 10px;
-	width: 9px;
-}
-
-#project .presentation-project .nav .next button:before{
-	left: 12px;
-	transform: rotate(-225deg);
-	-webkit-transform: rotate(-225deg);
-}
-#project .presentation-project .nav .next button:after{
-	top: 12px;
-	left: 12px;
-}
-
 #project .presentation-project .nav a{
 	background:none;border:none;
 	width:auto;height:50px;
@@ -1350,6 +1364,7 @@ body.noscroll{overflow: hidden;}
 	left:26%;
 }
 #project .start, #project .end{
+	position:relative;z-index:10;
 	width:100%;height:2%;
 	font-family: "SourceSansPro-Regular";
 	font-size:11px;font-size:1.1rem;
@@ -1500,7 +1515,7 @@ body.noscroll{overflow: hidden;}
 .contact .presentation-contact{
 	box-sizing: border-box;
 	width:100%;height:100%;
-	padding:90px 50px;
+	padding:90px 30px;
 	background: #333333;
 	-ms-transform: translateX(100%);
     -webkit-transform: translateX(100%);
@@ -1569,7 +1584,7 @@ body.noscroll{overflow: hidden;}
 	font-family: "SourceSansPro-Light";
 	font-size:14px;font-size:1.4rem;
 	line-height: 24px;
-	margin-top: 30px;
+	margin-top: 20px;
 }
 .contact .presentation-contact p.desc{
 	-ms-transform: translateY(-10px);
@@ -1625,15 +1640,15 @@ body.noscroll{overflow: hidden;}
 .contact .presentation-contact li{
 	display:inline-block;
 	vertical-align:middle;
-	margin:0 15px;
+	margin:0 10px;
 }
 .contact .presentation-contact li a{
 	position:relative;
 	display:block;
-	height:30px;width:30px;
+	height:28px;width:28px;
 	color:#6bdebd;
 	text-decoration:none;
-	font-size:15px;font-size:1.5rem;
+	font-size:14px;font-size:1.4rem;
 	transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
@@ -1644,6 +1659,12 @@ body.noscroll{overflow: hidden;}
 }
 .contact .presentation-contact a:hover{
 	border:1px solid #6bdebd;
+}
+.contact .presentation-contact a.mailto{
+	color:white;
+}
+.contact .presentation-contact a.mailto:hover{
+	border:none;
 }
 .contact .presentation-contact a i{
 	position:absolute;
@@ -1716,7 +1737,7 @@ body.noscroll{overflow: hidden;}
 }
 .mobile p{
 	font-family: "SourceSansPro-Light";
-	font-size:20px;font-size:2rem;
+	font-size:16px;font-size:1.6rem;
 	text-align: center;
 }
 .mobile p strong{

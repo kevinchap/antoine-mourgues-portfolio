@@ -59,10 +59,10 @@ input{
 	clear:both;
 }
 .displayNone{
-	display: none;
+	display: none !important;
 }
 .displayBlock{
-	display: block;
+	display: block !important;
 }
 .right{
 	float:right;

@@ -14,7 +14,9 @@
 		<div class="contain-sections <% if(id%2 === 0){ %>proj-left<% } %>">
 			<section class="one-section">
 				<div class="title">
-					<div class='client'><img src="./img/projets/<%= background_item %>-client.png" alt="Projet <%= name %> réalisé pour <%= client %>"></div>
+					<% if(client === true){ %>
+					<div class='client'><img src="./img/projets/<%= clientid %>.svg" alt="Projet <%= name %> réalisé pour <%= client %>"></div>
+					<% } %>
 		            <h2><%= name %></h2>
 		            <div class="seperate"><div></div></div>
 		            <p><%= subject %></p>
@@ -97,9 +99,9 @@
 				<p><%= description %></p>
 			</div>
 			<ul class="nav">
-				<li class='prev'></li>
-				<li class='close'><button class='close'></button><a href=''><span>close</span></a></li>
-				<li class='next'></li>
+				<li class='prev'><button class="other" data-other=""><svg version="1.1" width="30" height="30" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="140.5 -1.8 69.5 71.8" enable-background="new 140.5 -1.8 69.5 71.8" xml:space="preserve"><path fill="none" class='back' d="M175.2,64.7c17.5,0,31.7-14.2,31.7-31.7S192.7,1.2,175.2,1.2s-31.7,14.2-31.7,31.7S157.8,64.7,175.2,64.7z"/><path fill="#333333" stroke="#76FFD8" class='sign' stroke-miterlimit="10" d="M178.1,39.8c0.1,0.1,0.1,0.1,0.3,0.1s0.1,0,0.3-0.1c0.1-0.1,0.1-0.4,0-0.5l-6.4-6.4l6.4-6.4c0.1-0.1,0.1-0.4,0-0.5c-0.1-0.1-0.4-0.1-0.5,0l-6.5,6.5c-0.1,0.1-0.1,0.4,0,0.5L178.1,39.8z"/><path fill="#76FFD8" d="M175.2,66c18.2,0,33.1-14.9,33.1-33.1S193.4-0.1,175.2-0.1s-33.1,14.9-33.1,33.1S157,66,175.2,66zM175.2,1.2c17.5,0,31.7,14.2,31.7,31.7s-14.2,31.7-31.7,31.7s-31.7-14.3-31.7-31.7S157.8,1.2,175.2,1.2z"/></svg></button><a href=""><span>prev</span></a></li>
+				<li class='close'><button class='close'><svg version="1.1" width="30" height="30" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="75 -1.7 51.5 51.3" enable-background="new 75 -1.7 51.5 51.3" xml:space="preserve"><path fill="none" class='back' d="M100.9,48c13.2,0,23.9-10.7,23.9-23.9S114.1,0.2,100.9,0.2S77,10.9,77,24.1S87.8,48,100.9,48z"/><path fill="#76FFD8" stroke="#76FFD8" class='sign' stroke-miterlimit="10" d="M105.2,29.3c0.1,0.1,0.1,0.1,0.2,0.1s0.1,0,0.2-0.1c0.1-0.1,0.1-0.3,0-0.4l-4.8-4.8l4.8-4.8c0.1-0.1,0.1-0.3,0-0.4c-0.1-0.1-0.3-0.1-0.4,0l-4.9,4.9c-0.1,0.1-0.1,0.3,0,0.4L105.2,29.3z"/><path fill="#76FFD8" d="M100.9,49c13.7,0,24.9-11.2,24.9-24.9S114.6-0.8,100.9-0.8S76,10.4,76,24.1S87.2,49,100.9,49z M100.9,0.2c13.2,0,23.9,10.7,23.9,23.9S114.1,48,100.9,48S77,37.2,77,24.1S87.8,0.2,100.9,0.2z"/><path fill="#76FFD8" stroke="#76FFD8" class='sign' stroke-miterlimit="10" d="M96.2,19c0-0.1-0.1-0.1-0.1-0.1s-0.1,0-0.2,0.1c-0.1,0.1-0.1,0.3,0,0.4l4.8,4.7l-4.8,4.7c-0.1,0.1-0.1,0.3,0,0.4c0.1,0.1,0.3,0.1,0.4,0l4.9-4.8c0.1-0.1,0.1-0.3,0-0.4L96.2,19z"/></svg></button><a href=''><span>close</span></a></li>
+				<li class='next'><button class="other" data-other=""><svg version="1.1" width="30" height="30" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="140.5 -1.8 69.5 71.8" enable-background="new 140.5 -1.8 69.5 71.8" xml:space="preserve"><path fill="none" class='back' d="M175.2,64.7c17.5,0,31.7-14.2,31.7-31.7S192.7,1.2,175.2,1.2s-31.7,14.2-31.7,31.7S157.8,64.7,175.2,64.7z"/><path fill="#333333" stroke="#76FFD8" class='sign' stroke-miterlimit="10" d="M172.1,26.1c-0.1-0.1-0.1-0.1-0.3-0.1c-0.1,0-0.1,0-0.3,0.1s-0.1,0.4,0,0.5L178,33l-6.4,6.4c-0.1,0.1-0.1,0.4,0,0.5s0.4,0.1,0.5,0l6.5-6.5c0.1-0.1,0.1-0.4,0-0.5L172.1,26.1z"/><path fill="#76FFD8" d="M175.2,66c18.2,0,33.1-14.9,33.1-33.1S193.4-0.1,175.2-0.1s-33.1,14.9-33.1,33.1S157,66,175.2,66zM175.2,1.2c17.5,0,31.7,14.2,31.7,31.7s-14.2,31.7-31.7,31.7s-31.7-14.3-31.7-31.7S157.8,1.2,175.2,1.2z"/></svg></button><a href=""><span>next</span></a></li>
 			</ul>
 		</section>
 	</section>
@@ -108,13 +110,13 @@
 			var id = <%= id %>;
 			var prev = id - 1;
 			if(prev > 0){
-				$('.nav .prev').append("<button class='other' data-other='"+prev+"'></button><a href=''><span>prev</span></a>");
+				$('.nav .prev button').attr('data-other', prev);
 			}else{
 				$('.nav .prev').addClass('displayNone');
 			}
 			var next = id + 1;
 			if(next <= settings.app.projectList.length){
-				$('.nav .next').append("<button class='other' data-other='"+next+"''></button><a href=''><span>next</span></a>");
+				$('.nav .next button').attr('data-other', next);
 			}else{
 				$('.nav .next').addClass('displayNone');
 			}
