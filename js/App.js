@@ -34,7 +34,6 @@ var AppRouter = Backbone.Router.extend({
                 $('.menu-button').addClass('show');
             },4000);
         }else{
-            console.log('test');
             setTimeout(function(){
                 $('.home .title h1, .home .title .seperate, .home .title p, .home .scrolldown, .home .made-by').addClass('show');
                 setTimeout(function(){
