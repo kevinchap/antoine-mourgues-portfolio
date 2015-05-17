@@ -84,13 +84,17 @@
 			<div>
 				<ul class="work-details-title">
 					<li>Role</li>
-					<li>Client</li>
+					<% if(client === true){ %>
+						<li>Client</li>
+					<% } %>
 					<li>Agency</li>
 					<li>Date</li>
 				</ul>
 				<ul class="work-details">
 					<li><%= job %></li>
-					<li><%= client %></li>
+					<% if(client === true){ %>
+						<li><%= clientname %></li>
+					<% } %>
 					<li><%= agence %></li>
 					<li><%= date %></li>
 				</ul>
