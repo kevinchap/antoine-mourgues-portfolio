@@ -22,14 +22,18 @@
          },
          {
             "image":2,
-            "title":"Match légendaire"
+            "title":"Timeline"
          },
          {
             "image":3,
-            "title":"Temps additionnel"
+            "title":"Match légendaire"
          },
          {
             "image":4,
+            "title":"Temps additionnel"
+         },
+         {
+            "image":5,
             "title":"Match exploit"
          }
       ]
