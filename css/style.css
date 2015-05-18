@@ -14,9 +14,6 @@ body {
 body.noscroll {
     overflow: hidden;
 }
-.displayNone {
-    display: none;
-}
 .home-loader {
     position: absolute;
     top: 0;
@@ -1927,6 +1924,9 @@ body.noscroll {
     background-size: 225%}
 }@media screen and (max-width:970px) {
     .mobile {
-    display: block;
-}
+        display: block;
+    }
+    .displayNoneResponsive {
+        display: none !important;
+    }
 }
