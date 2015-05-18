@@ -39,7 +39,14 @@
 							</span>
 							<span class='input'><%= mockups[i].title %></span>
 						</div>
-		       			<img src="./img/projets/mockups/<%= background_item %>-<%= mockups[i].image %>.jpg" alt="<%= name %> mockup : <%= mockups[i].title %>">
+						<script type="text/javascript">
+							function is_retina_device() {
+								console.log(window.devicePixelRatio > 1);
+							    return window.devicePixelRatio > 1;
+							}
+						</script>
+		       			<img onload="var retina = is_retina_device();if(retina){this.setAttribute('class','displayInlineBlock');}else{this.setAttribute('class', 'displayNone');}" src="./img/projets/mockups/<%= background_item %>-<%= mockups[i].image %>@2.jpg" alt="<%= name %> mockup : <%= mockups[i].title %>">
+		       			<img onload="var retina = is_retina_device();if(!retina){this.setAttribute('class','displayInlineBlock');}else{this.setAttribute('class', 'displayNone');}" src="./img/projets/mockups/<%= background_item %>-<%= mockups[i].image %>.jpg" alt="<%= name %> mockup : <%= mockups[i].title %>">
 		       		</div>
 		       </section>
 		   	<% }); %>

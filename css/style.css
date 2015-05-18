@@ -14,6 +14,7 @@ body {
 body.noscroll {
     overflow: hidden;
 }
+.displayInlineBlock{display:inline-block;}
 .home-loader {
     position: absolute;
     top: 0;
